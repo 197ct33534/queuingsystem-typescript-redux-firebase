@@ -45,14 +45,14 @@ const CardInfo = () => {
         <h1 className="cardInfo-avatar_name">{infoUser?.fullname}</h1>
       </div>
       <div className="cardInfo-form col l-9">
-        <div className="row ">
+        <form className="row ">
           {infoForm.map((info) => (
             <div className="col l-6 cardInfo-form_item" key={info.label}>
-              <label htmlFor="">{info.label}</label>
-              <input type="text" value={info.input} disabled />
+              <label>{info.label}</label>
+              <input type="text" placeholder={info.input} disabled />
             </div>
           ))}
-        </div>
+        </form>
       </div>
     </div>
   );
