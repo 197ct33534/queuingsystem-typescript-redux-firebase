@@ -1,0 +1,30 @@
+.pagination {
+    margin: 29px 24px 24px 24px;
+    width: 1112px;
+
+    &-warp {
+        @include flex(center, flex-end);
+        > li {
+            color: #7e7d88;
+            line-height: 32px;
+            font-weight: 600;
+            text-align: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+        > li:hover,
+        > li.active {
+            background-color: $orangeColor;
+            color: #fff;
+        }
+    }
+    &-icon {
+        color: #7e7d88;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    li:hover > &-icon {
+        color: #fff;
+    }
+}

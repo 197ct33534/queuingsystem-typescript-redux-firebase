@@ -1,0 +1,106 @@
+.BodyDetailService {
+    position: relative;
+}
+.DetailService {
+    @include flex(flex-start, space-between);
+    width: $widthCardInfo;
+
+    padding: 0 0px 0 24px;
+    &-Link {
+        position: absolute;
+        right: 0;
+        top: 0;
+        flex-direction: column;
+
+        > a:last-child .deviceManager-add {
+            top: 94px;
+        }
+    }
+    &-control {
+        width: 100%;
+    }
+    &-left {
+        width: 370px;
+        padding-left: 16px;
+        background-color: $white;
+        box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+        border-radius: 12px;
+        padding-bottom: 264px;
+        .grid-col-3 {
+            gap: 12px 10px;
+        }
+        .grid-col-3.padding {
+            gap: 32px 10px;
+        }
+        .margin {
+            margin: 12px 0;
+        }
+        &_tittle {
+            color: $orangeColor;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 30px;
+            margin: 16px 0 12px 0;
+        }
+    }
+    &-label {
+        color: $backTittle;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    &-content {
+        line-height: 24px;
+        color: $-gray-400;
+        grid-column: span 2;
+    }
+    &-number {
+        border-radius: 8px;
+        border: 1.5px solid $border-color;
+        padding: 10px 10px 10px 12px;
+    }
+    &-right {
+        padding: 16px 24px;
+        margin-left: 24px;
+        width: 718px;
+
+        background-color: $white;
+        box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    &-table .table {
+        width: 100%;
+    }
+    .dropdown {
+        width: 160px;
+    }
+    .service-date-warp {
+        margin-left: 4px;
+    }
+    .service-date-item {
+        width: 130px;
+        padding: 8.5px 10px;
+        > i {
+            margin-right: 4px;
+        }
+    }
+    .controlService {
+        padding: 0px;
+        margin-bottom: 16px;
+    }
+
+    .controlDevice-warp-item {
+        margin: 0;
+
+        &_search {
+            width: 206px;
+        }
+    }
+    .pagination {
+        width: 100%;
+        margin-left: 0;
+    }
+}

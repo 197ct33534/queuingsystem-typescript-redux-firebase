@@ -1,0 +1,94 @@
+.manage {
+    width: calc(#{$full-width} - #{$dashboard-width});
+    background-color: $grayFF;
+    .controlDevice-warp-search {
+        margin: 0 104px 16px 0;
+        @include flex(center, flex-end);
+    }
+    .controlDevice-warp-item_search {
+        width: 240px;
+    }
+    &-warpTable {
+        position: relative;
+        margin-left: 24px;
+    }
+    .btn--large {
+        min-width: 147px;
+    }
+}
+// form
+.Manage-From {
+    background-color: $white;
+    margin: 0 24px 24px 24px;
+    padding: 12px 24px 24px 24px;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 16px;
+    &-title {
+        color: $orangeColor;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 12px;
+    }
+    &-Note {
+        color: $red;
+    }
+    &-layout {
+        gap: 0 24px;
+
+        &-left {
+            font-size: 14px;
+            line-height: 21px;
+            color: #7e7d88;
+            &-item {
+                @include flex(flex-start, flex-start);
+                flex-direction: column;
+                label {
+                    font-weight: 600;
+                    line-height: 24px;
+                    color: $backTittle;
+                    margin-bottom: 8px;
+                }
+                input {
+                    width: 100%;
+                    padding: 10px 10px 10px 12px;
+                    border: 1.5px solid $border-color;
+                    border-radius: 8px;
+                    color: #a9a9b0;
+                    outline: none;
+                    line-height: 24px;
+                    margin-bottom: 12px;
+                }
+                input::placeholder {
+                    color: #a9a9b0;
+                    line-height: 24px;
+                }
+            }
+            &-inputLarge:last-child {
+                padding-bottom: 130px;
+            }
+        }
+
+        &-right {
+            &-wrap {
+                background-color: $-Orange-50;
+                padding: 16px 24px;
+            }
+            > p {
+                color: $backTittle;
+                font-weight: 600;
+                line-height: 24px;
+                margin-bottom: 8px;
+            }
+            &-title {
+                color: $orangeColor;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 30px;
+            }
+            &-checkbox {
+                margin: 12px 0;
+            }
+        }
+    }
+}

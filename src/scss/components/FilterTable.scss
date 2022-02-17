@@ -1,0 +1,25 @@
+.FilterTable {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    background-color: $white;
+    border-radius: 8px;
+    padding: 8px 0px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: $backTittle;
+    border-bottom: 2px solid $orangeColor3;
+
+    > li {
+        padding: 11.5px 16px 11.5px 12px;
+        cursor: pointer;
+        @include flex(center, space-between);
+    }
+    > li.active,
+    > li:hover {
+        background-color: $-Orange-50;
+    }
+}

@@ -1,0 +1,80 @@
+#notify::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px $white;
+    border-radius: 43px;
+    background-color: $white;
+}
+
+#notify::-webkit-scrollbar {
+    width: 4px;
+    background-color: $white;
+}
+
+#notify::-webkit-scrollbar-thumb {
+    border-radius: 43px;
+    -webkit-box-shadow: inset 0 0 3px white;
+    background-color: $orangeColor2;
+    cursor: pointer;
+}
+
+.notify {
+    cursor: pointer;
+    width: $notifyBell-Width;
+    height: $notifyBell-Height;
+    z-index: 99;
+    border-radius: 10px;
+    background-color: #ffffff;
+    overflow-y: scroll;
+    position: absolute;
+    top: 85px;
+    right: 0;
+    transition: all 0.1s linear;
+
+    &-tittle {
+        height: 48px;
+        background-color: $orangeColor2;
+        color: $white;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 30px;
+        padding: 9px 0 9px 24px;
+        position: sticky;
+        top: 0px;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    &-wap {
+        padding: 0 15px 0 24px;
+    }
+    &-item {
+        border-bottom: 1.5px solid hsla(240, 4%, 84%, 1);
+        &_name {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            color: #bf5805;
+            margin-top: 16px;
+            > span {
+                text-transform: capitalize;
+            }
+        }
+        &_date {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 12px;
+        }
+    }
+    &-bridge {
+        width: 85px;
+        height: 50px;
+        display: block;
+
+        background-color: transparent;
+        position: absolute;
+        right: 215px;
+        top: 54px;
+        z-index: 999;
+        cursor: pointer;
+    }
+}

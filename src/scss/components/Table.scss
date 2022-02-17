@@ -1,0 +1,94 @@
+.warp-table {
+    position: relative;
+    margin: 16px 0px 24px 24px;
+}
+.table {
+    width: $widthCardInfo;
+    background-color: $white;
+    // margin: 16px 24px 24px 24px;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $-gray-400;
+    border-radius: 12px;
+    &-Link {
+        color: #4277ff;
+        text-decoration: underline;
+    }
+
+    &-filter {
+        @include flex(center, space-around);
+        flex-direction: column;
+        font-size: 8px;
+        position: absolute;
+        top: 50%;
+        right: 18px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+}
+table {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ffe3cd;
+    border-collapse: collapse;
+}
+thead {
+    background-color: $orangeColor2;
+    color: $white;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+
+    > tr > th {
+        padding: 12.5px 0 12.5px 16px;
+        position: relative;
+    }
+}
+tr:nth-child(even) {
+    background-color: #fff2e7;
+}
+tr {
+    height: 49px;
+}
+th {
+    padding-left: 16px;
+}
+th > span {
+    @include flex(center, flex-start);
+}
+th > span::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #ec3740;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+th > span.active::before {
+    background-color: #34cd26;
+}
+th > span.dis::before {
+    background-color: #6c7585;
+}
+th > span.doing::before {
+    background-color: #5490eb;
+}
+.colum-service-nowatch {
+    width: 268px;
+    position: relative;
+}
+.colum-service {
+    display: inline-block;
+    width: 268px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    border: unset;
+}

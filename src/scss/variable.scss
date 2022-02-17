@@ -1,0 +1,36 @@
+$gutters: 4px;
+$full-width: 1440px;
+$full-height: 100vh;
+$login-width-right: 848px;
+$width-logo: 169px;
+$height-logo: 136px;
+$dashboard-width: 200px;
+$widthCardInfo: 1112px;
+$widthDashboardRight: 401px;
+$widthDashboardCenter: calc(#{$full-width} - #{$widthDashboardRight});
+$widthDatePicker: 353px;
+$heightDatePicker: 363px;
+$notifyBell-Width: 360px;
+$notifyBell-Height: 526px;
+
+$red: #ff4747;
+$grayFF: #f6f6f6;
+$backText: #37474f;
+$backTittle: #282739;
+$-gray-400: #535261;
+$border-color: #d4d4d7;
+$-Orange-50: #fff2e7;
+$redText: #e73f3f;
+$orangeColor: #ff7506;
+$orangeColor2: #ff9138;
+$orangeColor3: #ffac6a;
+$grayInput: #eaeaec;
+
+$numbers: (0, 1, 2, 3, 4, 5, 6, 7, 8);
+
+@each $val in $numbers {
+    .grid-col-#{$val} {
+        display: grid;
+        grid-template-columns: repeat($val, 1fr);
+    }
+}

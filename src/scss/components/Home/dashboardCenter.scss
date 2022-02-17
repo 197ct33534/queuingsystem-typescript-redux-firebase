@@ -1,0 +1,174 @@
+.dashboard-center {
+    width: $widthDashboardCenter;
+    // height: $full-height;
+
+    // padding: 0 55px 0 24px;
+    padding: 0 24px;
+    background-color: $grayFF;
+    // border-right: 1px solid blue;
+
+    &_title {
+        color: $orangeColor;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        margin-bottom: 20px;
+    }
+    &-statistical {
+        @include flex(center, space-between);
+    }
+
+    &-chart {
+        background-color: $white;
+        padding: 24px 24px 27px 27px;
+        border-radius: 12px;
+        position: relative;
+        &_heading {
+            @include flex(center, space-between);
+
+            h1 {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 30px;
+                color: $backTittle;
+            }
+        }
+
+        &_warp {
+            @include flex(center, center);
+            position: relative;
+
+            > .dropdown {
+                width: 106px;
+            }
+        }
+
+        &_span {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: $backTittle;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        &_timer {
+            font-size: 14px;
+            line-height: 21px;
+            color: #a9a9b0;
+            margin-bottom: 20px;
+        }
+        &_quantily {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            color: $-gray-400;
+            position: absolute;
+            bottom: 0px;
+            left: 1px;
+        }
+        &_cross {
+            font-size: 14px;
+            line-height: 21px;
+            color: $-gray-400;
+            font-weight: 200;
+            position: absolute;
+            bottom: -9px;
+            left: 12px;
+        }
+
+        &_day {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            color: $-gray-400;
+            position: absolute;
+            bottom: -11px;
+            left: 17px;
+        }
+    }
+}
+
+.statistical-card {
+    background-color: red;
+    width: 186px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: $white;
+    margin-bottom: 16px;
+
+    &_heding {
+        @include flex(center, center);
+        padding: 8px 0px 0 12px;
+    }
+    &_icon {
+        // padding-right: 12px;
+        width: 48px;
+        height: 48px;
+        // opacity: 0.15;
+        border-radius: 50%;
+        box-sizing: unset;
+        @include flex(center, center);
+
+        > i {
+            font-size: 24px;
+            // transform: translate(50%, 50%);
+            text-align: center;
+        }
+    }
+    &_icon0 {
+        background: #e8effe;
+        > i {
+            color: hsla(221, 93%, 68%, 1);
+        }
+    }
+    &_icon1 {
+        background: #e1f7e6;
+        > i {
+            color: hsla(135, 58%, 49%, 1);
+        }
+    }
+    &_icon2 {
+        background: #fff3e9;
+        > i {
+            color: hsla(27, 100%, 71%, 1);
+        }
+    }
+    &_icon3 {
+        background: #fee9e9;
+        > i {
+            color: hsla(0, 91%, 70%, 1);
+        }
+    }
+    &_content {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        color: #535261;
+        margin-left: 12px;
+        width: 72px;
+    }
+
+    &_foot {
+        margin: 16px 21px 0 12px;
+        @include flex(center, space-between);
+        &_number {
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 45px;
+            color: #535261;
+            text-align: right;
+        }
+
+        &_growth {
+            color: $orangeColor2;
+            background-color: rgba(255, 149, 1, 0.15);
+            border-radius: 7.18115px;
+            font-size: 8px;
+            line-height: 12px;
+        }
+        &_growth.down {
+            background-color: rgba(231, 63, 63, 0.15);
+            color: #e73f3f;
+        }
+    }
+}

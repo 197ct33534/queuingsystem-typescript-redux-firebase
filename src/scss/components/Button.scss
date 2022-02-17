@@ -1,0 +1,90 @@
+$primary: #ff7506;
+$warning: #fff2e7;
+$danger: #e84855;
+$success: #abe188;
+$white: #ffffff;
+$dark: #a9a9b0;
+
+.btn {
+    font-weight: 400;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    // &:hover {
+    //     transform: translateY(-3px);
+    // }
+
+    &--primary--solid {
+        background-color: $primary;
+        color: $white;
+        border: 2px solid $primary;
+    }
+
+    &--warning--solid {
+        background-color: $warning;
+        color: $dark;
+        border: none;
+    }
+
+    &--danger--solid {
+        background-color: $danger;
+        color: $white;
+        border: none;
+    }
+
+    &--success--solid {
+        background-color: $success;
+        color: $white;
+        border: none;
+    }
+
+    &--primary--outline {
+        background-color: transparent;
+        border: 2px solid $primary;
+        color: $primary;
+    }
+
+    &--warning--outline {
+        background-color: $warning;
+        border: 2px solid $primary;
+        color: $primary;
+    }
+
+    &--danger--outline {
+        background-color: transparent;
+        border: 2px solid $danger;
+        color: $danger;
+    }
+
+    &--success--outline {
+        background-color: transparent;
+        border: 2px solid $success;
+        color: $success;
+    }
+
+    /* Button Size */
+
+    &--medium {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+    &--small {
+        // padding: 8px 40px;
+        min-width: 115px;
+        min-height: 48px;
+        font-size: 16px;
+    }
+    &--large {
+        // padding: 8px 40px;
+        min-width: 147px;
+        min-height: 40px;
+        font-size: 16px;
+    }
+    &--XL {
+        // padding: 8px 40px;
+        min-width: 176px;
+        min-height: 48px;
+        font-size: 16px;
+    }
+}

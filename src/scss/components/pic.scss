@@ -1,0 +1,31 @@
+.login-right {
+    position: relative;
+    width: $login-width-right;
+    height: $full-height;
+
+    &_img {
+        width: 605px;
+        height: 614px;
+        object-fit: cover;
+        position: absolute;
+        left: 79px;
+        top: 113px;
+    }
+
+    &_title {
+        position: absolute;
+        top: 407px;
+        left: 454px;
+        color: $orangeColor;
+
+        h4 {
+            font-weight: 400;
+            font-size: 34px;
+        }
+        h1 {
+            font-weight: 900;
+            font-size: 36px;
+            text-transform: capitalize;
+        }
+    }
+}

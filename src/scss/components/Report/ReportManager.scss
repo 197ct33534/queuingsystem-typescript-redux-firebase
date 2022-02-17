@@ -1,0 +1,8 @@
+.ReportManager {
+    width: calc(#{$full-width} - #{$dashboard-width});
+    background-color: $grayFF;
+
+    .deviceManager-add {
+        justify-content: space-evenly;
+    }
+}

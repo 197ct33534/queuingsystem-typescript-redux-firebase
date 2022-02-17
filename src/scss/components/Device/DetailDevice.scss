@@ -1,0 +1,41 @@
+.detailDevice {
+    &-title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        color: $orangeColor;
+        margin-bottom: 20px;
+    }
+    &-gap {
+        gap: 16px 0px;
+    }
+    &-item {
+        @include flex(center, space-between);
+
+        &_label {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: $backTittle;
+        }
+
+        &_content {
+            width: 100%;
+            flex: 1;
+            font-size: 16px;
+            line-height: 24px;
+            color: $-gray-400;
+            padding-left: 50px;
+        }
+        &:last-child:nth-last-child(odd) {
+            grid-column: auto / span 2;
+            flex-direction: column;
+            align-items: flex-start;
+
+            > div:last-child {
+                padding-left: 0px;
+                margin-top: 8px;
+            }
+        }
+    }
+}

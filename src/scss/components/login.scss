@@ -1,0 +1,79 @@
+.login {
+  width: 100%;
+  margin: auto;
+  height: $full-height;
+  @include flex(center, space-between);
+
+  &-left {
+    width: $full-width - $login-width-right;
+    height: 100%;
+    background-color: $grayFF;
+
+    &_form {
+      margin: 0 92px;
+    }
+
+    &_input {
+      width: 400px;
+      height: 44px;
+
+      outline: none;
+      border: none;
+      border: 2px solid $border-color;
+      border-radius: 4px;
+      padding: 8.5px 12px;
+      margin-bottom: 16px;
+    }
+
+    &_input.error {
+      border-color: $redText;
+    }
+
+    &_title {
+      color: $backText;
+      font-size: 18px;
+      line-height: 27px;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    &_error {
+      color: $redText;
+      margin-bottom: 19px;
+      @include flex(center, flex-start);
+      .bx-error-circle {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        color: $orangeColor;
+        margin-top: 4px;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    &_error.forgot {
+      justify-content: center;
+    }
+    &_buttonLogIn {
+      @include flex(center, center);
+    }
+  }
+
+  &-logo {
+    @include flex(center, center);
+    margin: 82px 0 76px;
+    &img {
+      width: $width-logo;
+      height: $height-logo;
+      object-fit: cover;
+    }
+  }
+  .forgot {
+    text-align: center;
+    margin-top: 8px;
+    display: block;
+  }
+}

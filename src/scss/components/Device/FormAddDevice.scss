@@ -1,0 +1,72 @@
+.formAddDevice {
+    width: $widthCardInfo;
+    background-color: $white;
+    border-radius: 16px;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    margin: 0 0 16px 24px;
+    padding: 16px 24px 93px 24px;
+
+    &-tittle {
+        width: 700px;
+        font-size: 24px;
+        line-height: 36px;
+        color: $orangeColor;
+        margin-bottom: 20px;
+    }
+
+    &-note {
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 18px;
+        color: #7e7d88;
+
+        > span {
+            color: #ff4747;
+            font-size: 16px;
+        }
+    }
+}
+.controll-btn {
+    @include flex(center, center);
+    margin: 24px 0 32px 0;
+
+    > a:first-child {
+        margin-right: 16px;
+    }
+    > a:last-child {
+        margin-left: 16px;
+    }
+}
+.formAdd-warp {
+    grid-column-gap: 24px;
+    grid-row-gap: 16px;
+}
+.formAdd-Item {
+    > input {
+        width: 100%;
+        margin-right: 24px;
+        padding: 10px 0 10px 12px;
+        border: 1.5px solid $border-color;
+        border-radius: 8px;
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: 400;
+        outline: none;
+    }
+    &_title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: $backTittle;
+        margin-bottom: 8px;
+        > span {
+            color: #ff4747;
+        }
+    }
+}
+.formAdd-Item:last-child:nth-last-child(odd) {
+    grid-column: auto / span 2;
+}
+.updateDevice {
+    padding-bottom: 32px;
+}

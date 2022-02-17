@@ -1,0 +1,106 @@
+.AddService {
+    margin: 0 38px 24px 24px;
+    padding: 0 24px 17px 24px;
+    background-color: $white;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 16px;
+
+    &-title {
+        color: $orangeColor;
+        padding-top: 16px;
+        margin-bottom: 12px;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    &-gap {
+        gap: 12px 24px;
+    }
+    &-inputItem {
+        > div {
+            color: $backTittle;
+            line-height: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            > span {
+                color: $red;
+            }
+        }
+        > input {
+            width: 100%;
+            height: 44px;
+            border: 1.5px solid $border-color;
+            outline: none;
+            border-radius: 8px;
+            line-height: 24px;
+            color: $-gray-400;
+            padding: 0px 10px;
+        }
+    }
+    &-inputDesc {
+        grid-row: span 2;
+        @include flex(flex-start, flex-start);
+        flex-direction: column;
+        > input {
+            flex: 1;
+            margin-right: 44px;
+            padding-bottom: 90px;
+        }
+    }
+    &-checkboxItem {
+        gap: 12px 15px;
+        &-right {
+            grid-column: span 6;
+        }
+
+        &-left {
+            @include flex(center, flex-start);
+            cursor: pointer;
+        }
+    }
+
+    &-inputNumber {
+        width: 61px;
+        height: 44px;
+        border: 1.5px solid $border-color;
+        border-radius: 8px;
+        line-height: 24px;
+        color: $-gray-400;
+        text-align: center;
+        margin: 0 12px;
+    }
+    &-checkbox {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1.5px solid #4277ff;
+        border-radius: 4px;
+        margin-right: 8px;
+        background-color: $white;
+        cursor: pointer;
+    }
+    &-checkbox:after {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        left: 6px;
+        width: 6px;
+        height: 12px;
+        border-bottom: 2px solid $white;
+        border-right: 2px solid $white;
+        -webkit-transform: rotate(45deg);
+    }
+    &-checkbox:checked {
+        background: #4277ff;
+        outline: none;
+        border: 1px solid rgba(50, 125, 255, 1);
+    }
+    input {
+        outline: none;
+    }
+    &-checkbox:checked {
+        accent-color: #4277ff;
+    }
+}

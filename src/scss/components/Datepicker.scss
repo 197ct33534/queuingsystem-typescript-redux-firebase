@@ -1,0 +1,75 @@
+.calendar {
+    width: $widthDatePicker;
+    height: $heightDatePicker;
+    background-color: $white;
+    box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+    border-radius: 12px;
+    margin: 0 24px;
+    &-header {
+        @include flex(center, space-around);
+        padding: 16px 10px;
+        color: $orangeColor;
+    }
+    &-current {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: bold;
+        word-spacing: 3px;
+    }
+
+    &-change {
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    &-line {
+        width: 288px;
+        border: 1px solid #dcddfd;
+        margin: 8px 29px 16px 29px;
+    }
+    &-body {
+        margin: 0 44px 0 37px;
+
+        &-week {
+            text-align: center;
+
+            div {
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 19px;
+                color: #ff9138;
+            }
+        }
+    }
+    &-days {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        color: $-gray-400;
+        transition: all 0.5s linear;
+        // grid-column-gap: 25px;
+        // grid-row-gap: 14px;
+    }
+    &-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        @include flex(center, center);
+    }
+    &-number.dis {
+        color: #7e7d88;
+    }
+    &-number:hover {
+        background-color: $orangeColor;
+        color: $white;
+        border-radius: 8px;
+    }
+}
+
+.date-current {
+    background-color: $orangeColor;
+    color: $white;
+    border-radius: 8px;
+}
