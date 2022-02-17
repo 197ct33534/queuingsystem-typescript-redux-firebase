@@ -11,7 +11,7 @@ const STYLES = [
   'btn--success--outline',
 ];
 interface PropButton {
-  children?: string;
+  children?: React.ReactNode;
   type: 'button' | 'submit' | 'reset' | undefined;
   onClick?:
     | ((e: React.MouseEvent<HTMLButtonElement>) => void | undefined)

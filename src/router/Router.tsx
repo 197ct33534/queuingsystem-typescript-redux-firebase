@@ -6,6 +6,8 @@ import TeamlateUser from '../Pages/user/TeamlateUser';
 import img1 from '../Assets/images/pic1.png';
 import img2 from '../Assets/images/Frame.png';
 import NewPass from '../Pages/user/NewPass';
+import Teamplate from '../Pages/Teamplate';
+import Info from '../Pages/Home/Info';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -69,154 +71,145 @@ const Router = () => {
         // { path: "", element: <PageLogin /> },
       ],
     },
+
+    // { path: '/dashboard', element: <ChartDashBoard /> },
+    {
+      path: '/info',
+      element: (
+        <Teamplate>
+          <Info />
+        </Teamplate>
+      ),
+    },
+
+    // // equipment
     // {
-    //     element: <ProtectedRouters />,
-    //     children: [
-    //         { path: "/dashboard", element: <ChartDashBoard /> },
-    //         { path: "/info", element: <Info /> },
-
-    //         // equipment
-    //         {
-    //             path: "/equipment",
-    //             children: [
-    //                 { path: "add", element: <AddDevice /> },
-    //                 {
-    //                     path: "detailRandom",
-    //                     children: [
-    //                         { path: ":id", element: <RandomDetail /> },
-    //                     ],
-    //                 },
-    //                 {
-    //                     path: "update",
-    //                     children: [
-    //                         { path: ":id", element: <UpdateDevice /> },
-    //                     ],
-    //                 },
-    //                 {
-    //                     path: "detail",
-    //                     children: [
-    //                         { path: ":id", element: <DetailDevice /> },
-    //                     ],
-    //                 },
-    //                 { path: "", element: <DeviceManager /> },
-    //             ],
-    //         },
-    //         //service
-    //         {
-    //             path: "/service",
-    //             children: [
-    //                 {
-    //                     path: "add",
-    //                     element: (
-    //                         <AddService
-    //                             pathCancel="/service"
-    //                             pathSubmit="/service"
-    //                         />
-    //                     ),
-    //                 },
-    //                 {
-    //                     path: "update",
-    //                     children: [
-    //                         {
-    //                             path: ":id",
-    //                             element: (
-    //                                 <AddService
-    //                                     pathCancel="/service"
-    //                                     pathSubmit="/service"
-    //                                     update
-    //                                 />
-    //                             ),
-    //                         },
-    //                     ],
-    //                 },
-    //                 {
-    //                     path: "detail",
-    //                     children: [
-    //                         { path: ":id", element: <DetailService /> },
-    //                     ],
-    //                 },
-    //                 { path: "", element: <ServiceManager /> },
-    //             ],
-    //         },
-    //         //randomNumber
-    //         {
-    //             path: "/randomNumber",
-    //             children: [
-    //                 { path: "add", element: <AddRandom /> },
-    //                 { path: "", element: <RandomManager /> },
-    //             ],
-    //         },
-    //         ///announce
-    //         {
-    //             path: "/announce",
-    //             element: <ReportManager />,
-    //         },
-    //         //manager
-    //         {
-    //             path: "/manage",
-    //             children: [
-    //                 {
-    //                     path: "role",
-
-    //                     children: [
-    //                         { path: "add", element: <FormRole /> },
-    //                         {
-    //                             path: "update",
-    //                             children: [
-    //                                 {
-    //                                     path: ":id",
-    //                                     element: (
-    //                                         <FormRole
-    //                                             // pathCancel="/service"
-    //                                             // pathSubmit="/service"
-    //                                             update
-    //                                         />
-    //                                     ),
-    //                                 },
-    //                             ],
-    //                         },
-    //                         { path: "", element: <Role /> },
-    //                     ],
-    //                 },
-    //                 {
-    //                     path: "account",
-    //                     children: [
-    //                         { path: "add", element: <AddAccount /> },
-    //                         { path: "", element: <AccountManager /> },
-    //                     ],
-    //                 },
-    //                 { path: "", element: <Role /> },
-    //                 {
-    //                     path: "user",
-
-    //                     children: [
-    //                         { path: "add", element: <FormRole /> },
-    //                         {
-    //                             path: "update",
-    //                             children: [
-    //                                 {
-    //                                     path: ":id",
-    //                                     element: (
-    //                                         <FormRole
-    //                                             // pathCancel="/service"
-    //                                             // pathSubmit="/service"
-    //                                             update
-    //                                         />
-    //                                     ),
-    //                                 },
-    //                             ],
-    //                         },
-    //                         { path: "", element: <UserManager /> },
-    //                     ],
-    //                 },
-    //             ],
-    //         },
-    //     ],
+    //   path: '/equipment',
+    //   children: [
+    //     { path: 'add', element: <AddDevice /> },
+    //     {
+    //       path: 'detailRandom',
+    //       children: [{ path: ':id', element: <RandomDetail /> }],
+    //     },
+    //     {
+    //       path: 'update',
+    //       children: [{ path: ':id', element: <UpdateDevice /> }],
+    //     },
+    //     {
+    //       path: 'detail',
+    //       children: [{ path: ':id', element: <DetailDevice /> }],
+    //     },
+    //     { path: '', element: <DeviceManager /> },
+    //   ],
     // },
+    // //service
     // {
-    //     path: "*",
-    //     element: "404 not found",
+    //   path: '/service',
+    //   children: [
+    //     {
+    //       path: 'add',
+    //       element: <AddService pathCancel="/service" pathSubmit="/service" />,
+    //     },
+    //     {
+    //       path: 'update',
+    //       children: [
+    //         {
+    //           path: ':id',
+    //           element: (
+    //             <AddService
+    //               pathCancel="/service"
+    //               pathSubmit="/service"
+    //               update
+    //             />
+    //           ),
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       path: 'detail',
+    //       children: [{ path: ':id', element: <DetailService /> }],
+    //     },
+    //     { path: '', element: <ServiceManager /> },
+    //   ],
     // },
+    // //randomNumber
+    // {
+    //   path: '/randomNumber',
+    //   children: [
+    //     { path: 'add', element: <AddRandom /> },
+    //     { path: '', element: <RandomManager /> },
+    //   ],
+    // },
+    // ///announce
+    // {
+    //   path: '/announce',
+    //   element: <ReportManager />,
+    // },
+    // //manager
+    // {
+    //   path: '/manage',
+    //   children: [
+    //     {
+    //       path: 'role',
+
+    //       children: [
+    //         { path: 'add', element: <FormRole /> },
+    //         {
+    //           path: 'update',
+    //           children: [
+    //             {
+    //               path: ':id',
+    //               element: (
+    //                 <FormRole
+    //                   // pathCancel="/service"
+    //                   // pathSubmit="/service"
+    //                   update
+    //                 />
+    //               ),
+    //             },
+    //           ],
+    //         },
+    //         { path: '', element: <Role /> },
+    //       ],
+    //     },
+    //     {
+    //       path: 'account',
+    //       children: [
+    //         { path: 'add', element: <AddAccount /> },
+    //         { path: '', element: <AccountManager /> },
+    //       ],
+    //     },
+    //     { path: '', element: <Role /> },
+    //     {
+    //       path: 'user',
+
+    //       children: [
+    //         { path: 'add', element: <FormRole /> },
+    //         {
+    //           path: 'update',
+    //           children: [
+    //             {
+    //               path: ':id',
+    //               element: (
+    //                 <FormRole
+    //                   // pathCancel="/service"
+    //                   // pathSubmit="/service"
+    //                   update
+    //                 />
+    //               ),
+    //             },
+    //           ],
+    //         },
+    //         { path: '', element: <UserManager /> },
+    //       ],
+    //     },
+    //   ],
+    // },
+
+    {
+      path: '*',
+      element: '404 not found',
+    },
   ]);
   return routes;
 };

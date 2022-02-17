@@ -38,11 +38,7 @@ const Login = () => {
         (account) => account.name === nameLoggin && account.pass === passLoggin
       );
       if (result) {
-        dispatch(
-          userSlice.actions.userLogginSucc({
-            idAcount: result.id,
-          })
-        );
+        dispatch(userSlice.actions.userLogginSucc(result.id));
         navigate('/info');
       } else {
         dispatch(userSlice.actions.userLogginErr());

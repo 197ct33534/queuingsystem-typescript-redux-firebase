@@ -29,9 +29,9 @@ class UserDataService {
     return getDocs(UserCollectionRef);
   };
 
-  //   getUser = (id) => {
-  //     const UserDoc = doc(db, 'Users', id);
-  //     return getDoc(UserDoc);
-  //   };
+  getUser = (id: string) => {
+    const UserDoc = doc(db, 'Users', id);
+    return getDoc(UserDoc);
+  };
 }
 export default new UserDataService();

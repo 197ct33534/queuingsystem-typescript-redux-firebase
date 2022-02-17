@@ -1,7 +1,7 @@
 import React from 'react';
 interface IInput {
-  classStyleLabel: string;
-  classStyleInput: string;
+  classStyleLabel?: string;
+  classStyleInput?: string;
   nameLabel: string;
   data: string;
   setData: React.Dispatch<React.SetStateAction<string>>;
