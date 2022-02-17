@@ -54,7 +54,7 @@ const Login = () => {
   };
   return (
     <>
-      <form action=" " className="login-left_form">
+      <form action="" className="login-left_form">
         <Input
           classStyleLabel="login-left_title"
           classStyleInput={`login-left_input ${!user.isLogginErr && 'error'}`}
