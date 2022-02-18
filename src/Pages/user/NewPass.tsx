@@ -19,7 +19,8 @@ const NewPass = () => {
       UserDataService.updateUser(user.IDemailAccount, { pass: pass });
       dispatch(userSlice.actions.userEmailAccout(''));
     } else {
-      setisError(false);
+      setisError(true);
+      console.log('thất bia');
     }
   };
   return (

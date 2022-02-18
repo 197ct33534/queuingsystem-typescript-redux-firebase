@@ -15,6 +15,13 @@ export default createSlice({
       state.isLogginSucc = true;
       state.isLogginErr = true;
     },
+    userLogoutSucc: (state, action) => {
+      state.idAcount = action.payload.idAcount;
+      state.isLogginSucc = action.payload.isLogginSucc;
+      state.isLogginErr = action.payload.isLogginErr;
+      state.forgotPass = action.payload.forgotPass;
+      state.IDemailAccount = action.payload.IDemailAccount;
+    },
     userLogginErr: (state) => {
       state.isLogginSucc = false;
       state.isLogginErr = false;

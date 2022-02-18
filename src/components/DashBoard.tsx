@@ -1,14 +1,27 @@
-import React, { useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import Logo from '../Assets/images/logo.png';
 import { navLists } from '../Assets/fakeData/dashBoardData';
 import Button from './Button';
-// import { LoginContext } from "./Layout";
+import { useDispatch } from 'react-redux';
+import userSlice from '../Pages/user/userSlice';
 
 const DashBoard = () => {
-  // const data = useContext(LoginContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogout = () => {
     // data.setLoggedIn(false);
+    dispatch(
+      // reset initalstate
+      userSlice.actions.userLogoutSucc({
+        isLogginSucc: false,
+        idAcount: '',
+        isLogginErr: true,
+        forgotPass: false,
+        IDemailAccount: '',
+      })
+    );
+    navigate('/');
   };
 
   return (
@@ -49,17 +62,17 @@ const DashBoard = () => {
             </NavLink>
           ))}
 
-          <div className="dashboard-logout">
-            <Link to="/" onClick={() => handleLogout()} key="logout">
-              <Button
-                buttonSize="btn--XL"
-                type="button"
-                buttonStyle="btn--warning--solid"
-              >
-                <i className="bx bx-log-out dashboard-logout_icon"></i>
-                <span className="dashboard-logout_content">Đằng xuất</span>
-              </Button>
-            </Link>
+          <div className="dashboard-logout" onClick={handleLogout}>
+            {/* <Link to="/" onClick={() => handleLogout()} key="logout"> */}
+            <Button
+              buttonSize="btn--XL"
+              type="button"
+              buttonStyle="btn--warning--solid"
+            >
+              <i className="bx bx-log-out dashboard-logout_icon"></i>
+              <span className="dashboard-logout_content">Đằng xuất</span>
+            </Button>
+            {/* </Link> */}
           </div>
         </div>
       </div>

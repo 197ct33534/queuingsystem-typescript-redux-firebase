@@ -34,6 +34,7 @@ const ForGotPass: React.FC = () => {
     } else {
       e.preventDefault();
       dispatch(userSlice.actions.userEmailAccout(''));
+      setisError(true);
     }
   };
   return (
