@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../Assets/images/logo.png';
 import { navLists } from '../Assets/fakeData/dashBoardData';
 import Button from './Button';
@@ -33,7 +33,7 @@ const DashBoard = () => {
         <div className="dashboard-list">
           {navLists.map((item) => (
             <NavLink
-              to={item.path}
+              to={`/${item.path}`}
               className={({ isActive }) =>
                 isActive ? 'active dashboard-list_item' : 'dashboard-list_item '
               }

@@ -8,6 +8,8 @@ import img2 from '../Assets/images/Frame.png';
 import NewPass from '../Pages/user/NewPass';
 import Teamplate from '../Pages/Teamplate';
 import Info from '../Pages/Home/Info';
+import HeaderInfo from '../Pages/Home/HeaderInfo';
+import DashboardMain from '../Pages/Home/DashboardMain';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -72,7 +74,15 @@ const Router = () => {
       ],
     },
 
-    // { path: '/dashboard', element: <ChartDashBoard /> },
+    {
+      path: '/dashboard',
+      element: (
+        <Teamplate>
+          <HeaderInfo title="Thông tin cá nhân" bgcolorright="#fff" />
+          <DashboardMain />
+        </Teamplate>
+      ),
+    },
     {
       path: '/info',
       element: (
