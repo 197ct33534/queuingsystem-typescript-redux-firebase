@@ -1,103 +1,102 @@
 .deviceManager {
-    width: calc(#{$full-width} - #{$dashboard-width});
-    background-color: $grayFF;
-    &-warp {
-        position: relative;
-    }
-    &-tittle {
-        padding-left: 24px;
-        color: $orangeColor;
-        font-size: 24px;
-        font-weight: bold;
-        line-height: 36px;
-        margin-bottom: 16px;
-    }
-    &-add {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        right: 0;
-        background-color: $-Orange-50;
-        width: 80px;
-        height: 94px;
-        @include flex(center, space-around);
-        flex-direction: column;
-        color: $orangeColor;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        text-align: center;
-        padding: 0 6px;
-        &_icon {
-            @include flex(center, center);
-            width: 28px;
-            height: 28px;
-            background-color: $orangeColor2;
-            border-radius: 5px;
-            color: $white;
-            font-size: 16px;
-            line-height: 24px;
+  width: calc(#{$full-width} - #{$dashboard-width});
+  background-color: $grayFF;
+  &-warp {
+    position: relative;
+  }
+  &-tittle {
+    padding-left: 24px;
+    color: $orangeColor;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 36px;
+  }
+  &-add {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    background-color: $-Orange-50;
+    width: 80px;
+    height: 94px;
+    @include flex(center, space-around);
+    flex-direction: column;
+    color: $orangeColor;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    padding: 0 6px;
+    &_icon {
+      @include flex(center, center);
+      width: 28px;
+      height: 28px;
+      background-color: $orangeColor2;
+      border-radius: 5px;
+      color: $white;
+      font-size: 16px;
+      line-height: 24px;
 
-            font-weight: bold;
-        }
+      font-weight: bold;
     }
+  }
 }
 
 // controlDevice.js
 .controlDevice {
-    width: 100%;
+  width: 100%;
 
-    padding: 0px 104px 0 24px;
-    @include flex(center, space-between);
-    &-warp {
-        @include flex(center, flex-start);
-        flex: 1;
+  padding: 0px 104px 0 24px;
+  @include flex(center, space-between);
+  &-warp {
+    @include flex(center, flex-start);
+    flex: 1;
 
-        &-item {
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 24px;
-            color: $backTittle;
+    &-item {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      color: $backTittle;
 
-            margin-right: 24px;
+      margin-right: 24px;
 
-            &_search {
-                width: 300px;
-                height: 44px;
-                position: relative;
-                > input {
-                    width: 100%;
-                    height: 100%;
-                    border: 1.5px solid $border-color;
-                    border-radius: 8px;
-                    padding: 10px 16px 10px 12px;
-                    line-height: 22px;
-                    color: #a9a9b0;
-                }
-                > input::placeholder {
-                    line-height: 22px;
-                    color: #a9a9b0;
-                }
-                > i {
-                    font-size: 14px;
-                    color: $orangeColor;
-                    position: absolute;
-                    right: 17px;
-                    top: 15px;
-                }
-            }
+      &_search {
+        width: 300px;
+        height: 44px;
+        position: relative;
+        > input {
+          width: 100%;
+          height: 100%;
+          border: 1.5px solid $border-color;
+          border-radius: 8px;
+          padding: 10px 16px 10px 12px;
+          line-height: 22px;
+          color: #a9a9b0;
         }
-        &-search {
-            margin-right: 0px;
+        > input::placeholder {
+          line-height: 22px;
+          color: #a9a9b0;
         }
-        &-item > .dropdown {
-            width: 300px;
-            height: 44px;
-            background-color: $white;
-
-            & > .dropdown-content {
-                background-color: $white;
-            }
+        > i {
+          font-size: 14px;
+          color: $orangeColor;
+          position: absolute;
+          right: 17px;
+          top: 15px;
         }
+      }
     }
+    &-search {
+      margin-right: 0px;
+    }
+    &-item > .dropdown {
+      width: 300px;
+      height: 44px;
+      background-color: $white;
+
+      & > .dropdown-content {
+        background-color: $white;
+      }
+    }
+  }
 }

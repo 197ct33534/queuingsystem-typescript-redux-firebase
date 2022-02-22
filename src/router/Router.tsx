@@ -10,6 +10,9 @@ import Teamplate from '../Pages/Teamplate';
 import Info from '../Pages/Home/Info';
 import HeaderInfo from '../Pages/Home/HeaderInfo';
 import DashboardMain from '../Pages/Home/DashboardMain';
+import ControllerEquip from '../Pages/equipment/ControllerEquip';
+import DeviceManager from '../Pages/equipment/DeviceManager';
+import ProtectedRouters from '../ProtectedRouters';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -73,45 +76,64 @@ const Router = () => {
         // { path: "", element: <PageLogin /> },
       ],
     },
-
     {
-      path: '/dashboard',
-      element: (
-        <Teamplate>
-          <HeaderInfo title="Thông tin cá nhân" bgcolorright="#fff" />
-          <DashboardMain />
-        </Teamplate>
-      ),
-    },
-    {
-      path: '/info',
-      element: (
-        <Teamplate>
-          <Info />
-        </Teamplate>
-      ),
+      element: <ProtectedRouters />,
+      children: [
+        {
+          path: '/dashboard',
+          element: (
+            <Teamplate>
+              <HeaderInfo title="Thông tin cá nhân" bgcolorright="#fff" />
+              <DashboardMain />
+            </Teamplate>
+          ),
+        },
+        {
+          path: '/info',
+          element: (
+            <Teamplate>
+              <Info />
+            </Teamplate>
+          ),
+        }, // // equipment
+        {
+          path: '/equipment',
+          children: [
+            // { path: 'add', element: <AddDevice /> },
+            // {
+            //   path: 'detailRandom',
+            //   children: [{ path: ':id', element: <RandomDetail /> }],
+            // },
+            // {
+            //   path: 'update',
+            //   children: [{ path: ':id', element: <UpdateDevice /> }],
+            // },
+            // {
+            //   path: 'detail',
+            //   children: [{ path: ':id', element: <DetailDevice /> }],
+            // },
+            {
+              path: '',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Danh sách thiết bị"
+                    task={['Thiết bị', '']}
+                    contentMain="Danh sách thiết bị"
+                  />
+                  <DeviceManager />
+                </Teamplate>
+              ),
+            },
+          ],
+        },
+        {
+          path: '*',
+          element: '404 not found',
+        },
+      ],
     },
 
-    // // equipment
-    // {
-    //   path: '/equipment',
-    //   children: [
-    //     { path: 'add', element: <AddDevice /> },
-    //     {
-    //       path: 'detailRandom',
-    //       children: [{ path: ':id', element: <RandomDetail /> }],
-    //     },
-    //     {
-    //       path: 'update',
-    //       children: [{ path: ':id', element: <UpdateDevice /> }],
-    //     },
-    //     {
-    //       path: 'detail',
-    //       children: [{ path: ':id', element: <DetailDevice /> }],
-    //     },
-    //     { path: '', element: <DeviceManager /> },
-    //   ],
-    // },
     // //service
     // {
     //   path: '/service',
@@ -215,11 +237,6 @@ const Router = () => {
     //     },
     //   ],
     // },
-
-    {
-      path: '*',
-      element: '404 not found',
-    },
   ]);
   return routes;
 };

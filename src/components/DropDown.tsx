@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+
 interface IProps {
   selected: string;
   setSelected: React.Dispatch<React.SetStateAction<string>>;
@@ -27,6 +28,7 @@ const DropDown = (props: IProps) => {
     handleRemoveIconUp();
     setIsActive(false);
   };
+
   return (
     <div className="dropdown">
       <div
@@ -51,7 +53,6 @@ const DropDown = (props: IProps) => {
               onClick={(e) => {
                 setSelected(option);
                 setIsActive(false);
-
                 up && handleRemoveIconUp();
               }}
               className={`dropdown-item ${
