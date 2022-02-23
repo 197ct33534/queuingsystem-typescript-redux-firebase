@@ -13,8 +13,11 @@ import DashboardMain from '../Pages/Home/DashboardMain';
 
 import DeviceManager from '../Pages/equipment/DeviceManager';
 import ProtectedRouters from '../ProtectedRouters';
-import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
+
 import AccountManager from '../Pages/manage/Account/AccountManager';
+
+import AddAccount from '../Pages/manage/Account/AddAccount';
+import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -118,24 +121,27 @@ const Router = () => {
             //   path: 'detailRandom',
             //   children: [{ path: ':id', element: <RandomDetail /> }],
             // },
-            {
-              path: 'update',
-              children: [
-                {
-                  path: ':id',
-                  element: (
-                    <Teamplate>
-                      <HeaderInfo
-                        title="Cập nhật thiết bị"
-                        task={['Thiết bị', 'Danh sách thiết bị', '']}
-                        contentMain="Quản lý thiết bị"
-                      />
-                      <TeamplateFormAdd update />
-                    </Teamplate>
-                  ),
-                },
-              ],
-            },
+            // {
+            //   path: 'update',
+            //   children: [
+            //     {
+            //       path: ':id',
+            //       element: (
+            //         <Teamplate>
+            //           <HeaderInfo
+            //             title="Cập nhật thiết bị"
+            //             task={['Thiết bị', 'Danh sách thiết bị', '']}
+            //             contentMain="Quản lý thiết bị"
+            //           />
+            //           <TeamplateFormAdd
+            //             update
+
+            //           />
+            //         </Teamplate>
+            //       ),
+            //     },
+            //   ],
+            // },
             // {
             //   path: 'detail',
             //   children: [{ path: ':id', element: <DetailDevice /> }],
@@ -184,7 +190,19 @@ const Router = () => {
             {
               path: 'account',
               children: [
-                // { path: 'add', element: <AddAccount /> },
+                {
+                  path: 'add',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Quản lí tài khoản"
+                        task={['Cài đặt hệ thống ', 'Quản lý tài khoản', '']}
+                        contentMain="Quản lí tài khoản"
+                      />
+                      <AddAccount />
+                    </Teamplate>
+                  ),
+                },
                 {
                   path: '',
                   element: (

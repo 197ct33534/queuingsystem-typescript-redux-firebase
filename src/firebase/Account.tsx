@@ -20,10 +20,11 @@ export interface Iaccount {
   emailAccount: string;
   jobAccount: string;
   active: boolean;
+  rePassWord?: string;
 }
 class AccountDataService {
-  addAccount = (id: string, newAccount: Iaccount) => {
-    return setDoc(doc(db, 'Manage-Account', id), newAccount);
+  addAccount = (newAccount: Iaccount) => {
+    return addDoc(AccountCollectionRef, newAccount);
   };
 
   //   updateAccount = (id: string, updatedAccount: {}) => {

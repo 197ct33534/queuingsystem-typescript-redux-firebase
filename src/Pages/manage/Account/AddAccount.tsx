@@ -1,45 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
-import DropDown from '../components/DropDown';
-import EquipDataService, { IEquip } from '../firebase/equip';
-import equipSlice from './equipment/equipSlice';
-
+import Button from '../../../components/Button';
+import DropDown from '../../../components/DropDown';
+import { Iaccount } from '../../../firebase/Account';
+import AccountSlice from './AccountSlice';
+import AccountDataService from '../../../firebase/Account';
 interface IFill {
   state: string;
   display: string;
   type: 'input' | 'dropdown';
   value?: string[];
 }
-interface IProps {
-  update?: boolean;
-  data?: { typeDevice: string }[];
-}
-const TeamplateFormAdd = (props: IProps) => {
+
+const AddAccount = () => {
   const dispatch = useDispatch();
-  const { update, data } = props;
+
   const FillInfors = [
-    { state: 'id', display: 'Mã thiết bị', type: 'input' },
+    { state: 'nameUser', display: 'Họ tên', type: 'input' },
+
     {
-      state: 'typeDevice',
-      display: 'Loại thiết bị',
-      type: 'dropdown',
-      value: ['Kiosk', 'Display counter'],
-    },
-    {
-      state: 'name',
-      display: 'Tên thiết bị',
-      type: 'input',
-    },
-    {
-      state: 'Account',
+      state: 'nameAccount',
       display: 'Tên đăng nhập',
       type: 'input',
     },
     {
-      state: 'ipAddress',
-      display: 'Địa chỉ IP',
+      state: 'phone',
+      display: 'Số điện thoại',
       type: 'input',
     },
     {
@@ -48,26 +35,40 @@ const TeamplateFormAdd = (props: IProps) => {
       type: 'input',
     },
     {
-      state: 'service',
-      display: 'Dịch vụ sử dụng',
+      state: 'emailAccount',
+      display: 'Email',
       type: 'input',
     },
+    {
+      state: 'rePassWord',
+      display: 'Nhập lại mật khẩu',
+      type: 'input',
+    },
+    {
+      state: 'typeDevice',
+      display: 'Vai trò',
+      type: 'dropdown',
+      value: ['Kế toán', 'Quản lý', 'Admin'],
+    },
+    {
+      state: 'typeDevice',
+      display: 'Tình trạng',
+      type: 'dropdown',
+      value: ['Tất cả', 'Ngừng hoạt động', 'Hoạt động'],
+    },
   ];
-  const [selected, setSelected] = useState(
-    'Chọn loại thiết bị'
-    // data ? data.typeDevice : 'Chọn loại thiết bị'
-  );
+  const [selectedActive, setSelectedActive] = useState('Tất cả');
+  const [selectedRole, setSelectedRole] = useState('Admin');
   // const ArryKeyState = FillInfors.map((Fill) => Fill.state);
-  const ObjectKeyState: IEquip = {
+  const ObjectKeyState: Iaccount = {
     id: '',
-    name: '',
-    ipAddress: '',
+    nameAccount: '',
+    nameUser: '',
+    phone: '',
+    emailAccount: '',
+    jobAccount: '',
     active: true,
-    connect: true,
-    service: '',
-    Account: '',
-    passWord: '',
-    typeDevice: '',
+    rePassWord: '',
   };
   // ArryKeyState.map((key) => {
   //   return (ObjectKeyState[key as keyof IEquip] = '');
@@ -76,18 +77,24 @@ const TeamplateFormAdd = (props: IProps) => {
   const [fillState, setFillState] = useState(ObjectKeyState);
 
   useEffect(() => {
+    let active = true;
+    if (selectedActive === 'Ngưng hoạt động') {
+      active = false;
+    }
     setFillState((prev) => ({
       ...prev,
-      typeDevice: selected,
+      active: active,
+      jobAccount: selectedRole,
     }));
-  }, [selected]);
+  }, [selectedActive, selectedRole]);
+  console.log(fillState);
 
   const handleSubmit = async () => {
-    const newEquip: IEquip = fillState;
-    newEquip.active = true;
-    newEquip.connect = true;
-    await EquipDataService.addEquipment(newEquip.id, newEquip);
-    dispatch(equipSlice.actions.addNewEquip(newEquip));
+    // const newEquip: IEquip = fillState;
+    // newEquip.active = true;
+    // newEquip.connect = true;
+    await AccountDataService.addAccount(fillState);
+    dispatch(AccountSlice.actions.addNewAccount(fillState));
   };
   return (
     <>
@@ -96,14 +103,7 @@ const TeamplateFormAdd = (props: IProps) => {
         <div className="grid-col-2 formAdd-warp">
           {FillInfors.map((fill, key) =>
             fill.type === 'input' ? (
-              <div
-                className={`formAdd-Item ${
-                  key === FillInfors.length - 1 && key % 2 === 0
-                    ? 'lastChildODD'
-                    : ''
-                }`}
-                key={key}
-              >
+              <div className="formAdd-Item" key={key}>
                 <div className="formAdd-Item_title">
                   {fill.display}: <span>*</span>
                 </div>
@@ -116,8 +116,13 @@ const TeamplateFormAdd = (props: IProps) => {
                 {
                   <input
                     required
-                    type={fill.display === 'Mật khẩu' ? 'password' : 'text'}
-                    value={fillState[fill.state as keyof IEquip] + ''}
+                    type={
+                      fill.display === 'Mật khẩu' ||
+                      fill.display === 'Nhập lại mật khẩu'
+                        ? 'password'
+                        : 'text'
+                    }
+                    value={fillState[fill.state as keyof Iaccount] + ''}
                     onChange={(e) => {
                       setFillState((prev) => ({
                         ...prev,
@@ -129,21 +134,20 @@ const TeamplateFormAdd = (props: IProps) => {
                 }
               </div>
             ) : (
-              <div
-                className={`formAdd-Item ${
-                  key === FillInfors.length - 1 && key % 2 === 0
-                    ? 'lastChildODD'
-                    : ''
-                }`}
-                key={key}
-              >
+              <div className="formAdd-Item " key={key}>
                 <div className="formAdd-Item_title">
                   {fill.display}: <span>*</span>
                 </div>
                 <DropDown
                   up
-                  selected={selected}
-                  setSelected={setSelected}
+                  selected={
+                    fill.display === 'Vai trò' ? selectedActive : selectedRole
+                  }
+                  setSelected={
+                    fill.display === 'Vai trò'
+                      ? setSelectedActive
+                      : setSelectedRole
+                  }
                   options={fill.value !== undefined ? fill.value : []}
                 />
               </div>
@@ -157,7 +161,7 @@ const TeamplateFormAdd = (props: IProps) => {
         </div>
       </div>
       <div className="controll-btn">
-        <Link to="/equipment">
+        <Link to="/manage/account">
           <Button
             type="button"
             buttonStyle="btn--warning--outline"
@@ -166,13 +170,13 @@ const TeamplateFormAdd = (props: IProps) => {
             Hủy bỏ
           </Button>
         </Link>
-        <Link to="/equipment" onClick={handleSubmit}>
+        <Link to="/manage/account" onClick={handleSubmit}>
           <Button
             type="button"
             buttonStyle="btn--primary--solid"
             buttonSize="btn--large"
           >
-            {!update ? 'Thêm thiết bị' : 'Cập nhật'}
+            Thêm thiết bị
           </Button>
         </Link>
       </div>
@@ -180,4 +184,4 @@ const TeamplateFormAdd = (props: IProps) => {
   );
 };
 
-export default TeamplateFormAdd;
+export default AddAccount;

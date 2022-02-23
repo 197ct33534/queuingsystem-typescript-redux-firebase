@@ -16,7 +16,6 @@ const AccountManager = () => {
     Account.dataAccountAdded,
     ...Account.dataAccount,
   ]);
-  console.log('Account', Account);
 
   const getAccount = async () => {
     const data = await AccountDataService.getAllAccount();
