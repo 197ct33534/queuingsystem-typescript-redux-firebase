@@ -3,7 +3,7 @@ export default createSlice({
   name: 'Equip',
   initialState: {
     dataEquip: [],
-    dataEquipAdded: '',
+    dataEquipAdded: {},
     dataEquipUpdated: '',
     idDataEquipRemoved: '',
     selectedActive: 'Tất cả',
@@ -18,6 +18,9 @@ export default createSlice({
     },
     setSelectedConnect: (state, action) => {
       state.selectedConnect = action.payload;
+    },
+    addNewEquip: (state, action) => {
+      state.dataEquipAdded = action.payload;
     },
   },
 });

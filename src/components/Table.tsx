@@ -6,7 +6,7 @@ import { PaginationSelector } from '../Redux/selector';
 
 // import FilterTable from "./FilterTable";
 interface IPropsTable {
-  datas: IEquip[];
+  datas: any[];
 
   tittleHeaders: { keycolum: string; display: string }[];
   keySpecial?: string[];
@@ -99,7 +99,7 @@ const Table = (props: IPropsTable) => {
                   }
                 >
                   {item.keycolum === 'active' ? (
-                    data[item.keycolum as keyof IEquip] === true ? (
+                    data[item.keycolum as keyof typeof datas] === true ? (
                       <span className="active">{'Hoạt động'}</span>
                     ) : (
                       <span className="danger">{'Ngưng hoạt động'}</span>
@@ -108,7 +108,7 @@ const Table = (props: IPropsTable) => {
                     ''
                   )}
                   {item.keycolum === 'connect' ? (
-                    data[item.keycolum as keyof IEquip] === true ? (
+                    data[item.keycolum as keyof typeof datas] === true ? (
                       <span className="active">{'Kết nối'}</span>
                     ) : (
                       <span className="danger">{'Mất kết nối'}</span>
@@ -117,7 +117,7 @@ const Table = (props: IPropsTable) => {
                     ''
                   )}
 
-                  {data[item.keycolum as keyof IEquip]}
+                  {data[item.keycolum as keyof typeof datas]}
                   {item.keycolum === 'service' && (
                     <>
                       <p
@@ -132,14 +132,14 @@ const Table = (props: IPropsTable) => {
               ))}
               {IsDetail && (
                 <th>
-                  <Link to={`/${pathDetail}/${data.id}`}>
+                  <Link to={`/${pathDetail}/${data['id']}`}>
                     <span className="table-Link">Chi tiết</span>
                   </Link>
                 </th>
               )}
               {IsUpdate && (
                 <th>
-                  <Link to={`/${pathUpdate}/${data.id}`}>
+                  <Link to={`/${pathUpdate}/${data['id']}`}>
                     <span className="table-Link">Cập nhật</span>
                   </Link>
                 </th>

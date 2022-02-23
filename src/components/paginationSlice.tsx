@@ -18,5 +18,12 @@ export default createSlice({
     setminPageNumberLimit: (state, action) => {
       state.minPageNumberLimit = action.payload;
     },
+    reset: (state) => {
+      state.pageNumberLimit = 5;
+      state.maxPageNumberLimit = 5;
+      state.minPageNumberLimit = 0;
+      state.numRowInPage = 9;
+      state.currentPerPage = 1;
+    },
   },
 });

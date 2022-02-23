@@ -7,6 +7,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  setDoc,
   doc,
 } from 'firebase/firestore';
 const EquipCollectionRef = collection(db, 'Equipment');
@@ -14,16 +15,16 @@ export interface IEquip {
   id: string;
   name: string;
   ipAddress: string;
-  active: boolean;
-  connect: boolean;
+  active?: boolean;
+  connect?: boolean;
   service: string;
   Account: string;
   passWord: string;
   typeDevice: string;
 }
 class EquipDataService {
-  addEquipment = (newEquip: IEquip) => {
-    return addDoc(EquipCollectionRef, newEquip);
+  addEquipment = (id: string, newEquip: IEquip) => {
+    return setDoc(doc(db, 'Equipment', id), newEquip);
   };
 
   //   updateEquip = (id: string, updatedEquip: {}) => {

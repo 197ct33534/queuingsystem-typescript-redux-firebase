@@ -10,9 +10,11 @@ import Teamplate from '../Pages/Teamplate';
 import Info from '../Pages/Home/Info';
 import HeaderInfo from '../Pages/Home/HeaderInfo';
 import DashboardMain from '../Pages/Home/DashboardMain';
-import ControllerEquip from '../Pages/equipment/ControllerEquip';
+
 import DeviceManager from '../Pages/equipment/DeviceManager';
 import ProtectedRouters from '../ProtectedRouters';
+import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
+import AccountManager from '../Pages/manage/Account/AccountManager';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -99,15 +101,41 @@ const Router = () => {
         {
           path: '/equipment',
           children: [
-            // { path: 'add', element: <AddDevice /> },
+            {
+              path: 'add',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Thêm thiết bị"
+                    task={['Thiết bị', 'Danh sách thiết bị', '']}
+                    contentMain="Danh sách thiết bị"
+                  />
+                  <TeamplateFormAdd />
+                </Teamplate>
+              ),
+            },
             // {
             //   path: 'detailRandom',
             //   children: [{ path: ':id', element: <RandomDetail /> }],
             // },
-            // {
-            //   path: 'update',
-            //   children: [{ path: ':id', element: <UpdateDevice /> }],
-            // },
+            {
+              path: 'update',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Cập nhật thiết bị"
+                        task={['Thiết bị', 'Danh sách thiết bị', '']}
+                        contentMain="Quản lý thiết bị"
+                      />
+                      <TeamplateFormAdd update />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             // {
             //   path: 'detail',
             //   children: [{ path: ':id', element: <DetailDevice /> }],
@@ -125,6 +153,77 @@ const Router = () => {
                 </Teamplate>
               ),
             },
+          ],
+        },
+        {
+          path: '/manage',
+          children: [
+            // {
+            //   path: 'role',
+
+            //   children: [
+            //     { path: 'add', element: <FormRole /> },
+            //     {
+            //       path: 'update',
+            //       children: [
+            //         {
+            //           path: ':id',
+            //           element: (
+            //             <FormRole
+            //               // pathCancel="/service"
+            //               // pathSubmit="/service"
+            //               update
+            //             />
+            //           ),
+            //         },
+            //       ],
+            //     },
+            //     { path: '', element: <Role /> },
+            //   ],
+            // },
+            {
+              path: 'account',
+              children: [
+                // { path: 'add', element: <AddAccount /> },
+                {
+                  path: '',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Quản lý tài khoản"
+                        task={['Cài đặt hệ thống', '']}
+                        contentMain="Danh sách tài khoản"
+                      />
+                      <AccountManager />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
+            // { path: '', element: <Role /> },
+            // {
+            //   path: 'user',
+
+            //   children: [
+            //     { path: 'add', element: <FormRole /> },
+            //     {
+            //       path: 'update',
+            //       children: [
+            //         {
+            //           path: ':id',
+            //           element: (
+            //             <FormRole
+            //               // pathCancel="/service"
+            //               // pathSubmit="/service"
+            //               update
+            //             />
+            //           ),
+            //         },
+            //       ],
+            //     },
+            //     { path: '', element: <UserManager /> },
+            //   ],
+            // },
           ],
         },
         {
@@ -178,65 +277,6 @@ const Router = () => {
     //   element: <ReportManager />,
     // },
     // //manager
-    // {
-    //   path: '/manage',
-    //   children: [
-    //     {
-    //       path: 'role',
-
-    //       children: [
-    //         { path: 'add', element: <FormRole /> },
-    //         {
-    //           path: 'update',
-    //           children: [
-    //             {
-    //               path: ':id',
-    //               element: (
-    //                 <FormRole
-    //                   // pathCancel="/service"
-    //                   // pathSubmit="/service"
-    //                   update
-    //                 />
-    //               ),
-    //             },
-    //           ],
-    //         },
-    //         { path: '', element: <Role /> },
-    //       ],
-    //     },
-    //     {
-    //       path: 'account',
-    //       children: [
-    //         { path: 'add', element: <AddAccount /> },
-    //         { path: '', element: <AccountManager /> },
-    //       ],
-    //     },
-    //     { path: '', element: <Role /> },
-    //     {
-    //       path: 'user',
-
-    //       children: [
-    //         { path: 'add', element: <FormRole /> },
-    //         {
-    //           path: 'update',
-    //           children: [
-    //             {
-    //               path: ':id',
-    //               element: (
-    //                 <FormRole
-    //                   // pathCancel="/service"
-    //                   // pathSubmit="/service"
-    //                   update
-    //                 />
-    //               ),
-    //             },
-    //           ],
-    //         },
-    //         { path: '', element: <UserManager /> },
-    //       ],
-    //     },
-    //   ],
-    // },
   ]);
   return routes;
 };

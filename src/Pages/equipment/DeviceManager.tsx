@@ -7,11 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EquipSelector } from '../../Redux/selector';
 import equipSlice from './equipSlice';
 import Pagination from '../../components/Pagination';
+import paginationSlice from '../../components/paginationSlice';
 
 const DeviceManager = () => {
   const Equip = useSelector(EquipSelector);
   const dispatch = useDispatch();
-  const [equip, setEquip] = useState<IEquip[]>(Equip.dataEquip);
+  const [equip, setEquip] = useState<IEquip[]>([
+    Equip.dataEquipAdded,
+    ...Equip.dataEquip,
+  ]);
 
   const getEquips = async () => {
     const data = await EquipDataService.getAllEquipment();
@@ -21,10 +25,11 @@ const DeviceManager = () => {
     });
 
     setEquip(dataArray);
-    dispatch(equipSlice.actions.saveDataEquip(dataArray));
   };
   useEffect(() => {
     getEquips();
+
+    dispatch(equipSlice.actions.saveDataEquip(equip));
   }, []);
   let Datas = [...equip];
   if (Equip.selectedActive !== 'Tất cả') {
@@ -44,7 +49,9 @@ const DeviceManager = () => {
   useEffect(() => {
     dispatch(equipSlice.actions.saveDataEquip(equip));
   }, [Datas]);
-
+  useEffect(() => {
+    dispatch(paginationSlice.actions.reset());
+  }, []);
   return (
     <div className="deviceManager">
       <ControllerEquip />

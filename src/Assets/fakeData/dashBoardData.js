@@ -14,7 +14,7 @@ export const navLists = [
   {
     display: 'Cài đặt hệ thống',
     icon: setting,
-    path: 'manage',
+    path: 'manage/account',
     childrens: [
       { display: 'Quản lý vai trò', path: 'manage/role' },
       { display: 'Quản lý tài khoản', path: 'manage/account' },

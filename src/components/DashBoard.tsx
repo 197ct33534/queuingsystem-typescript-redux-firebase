@@ -41,21 +41,41 @@ const DashBoard = () => {
             >
               <img src={item.icon} alt="" />
               <span className="dashboard-list_content">{item.display}</span>
-              {item.display === 'Cài đặt hệ thống' ? (
-                <i className="bx bx-dots-vertical-rounded dashboard-list_setting"></i>
+              {item.childrens ? (
+                <>
+                  <i className="bx bx-dots-vertical-rounded dashboard-list_setting"></i>
+                  <ul className="dashboard-list2">
+                    {item.childrens.map((child) => (
+                      // <NavLink
+                      //   // to={child.path}
+                      //   // className={({ isActive }) =>
+                      //   //   isActive ? 'active ' : ''
+                      //   // }
+                      //   key={child.path}
+                      // >
+                      <li
+                        key={child.display}
+                        onClick={() => navigate(child.path)}
+                      >
+                        {child.display}
+                      </li>
+                      // </NavLink>
+                    ))}
+                  </ul>
+                </>
               ) : (
                 ''
               )}
               {/* {item.childrens && (
                 <ul className="dashboard-list2">
                   {item.childrens.map((child) => (
-                    <NavLink
-                      to={child.path}
-                      className={({ isActive }) => (isActive ? 'active ' : '')}
+                    <li
+                      // to={child.path}
+                      // className={({ isActive }) => (isActive ? 'active ' : '')}
                       key={child.path}
                     >
                       <li key={child.display}>{child.display}</li>
-                    </NavLink>
+                    </li>
                   ))}
                 </ul>
               )} */}

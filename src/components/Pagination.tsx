@@ -8,14 +8,6 @@ interface IPropsPaginate {
 const Pagination = (props: IPropsPaginate) => {
   const {
     totalDatas, //độ dài của mảng dữ liệu : number
-
-    // currentPerPage, //số trang hiện tại  trong bảng : number
-    // setCurrentPerPage, // hàm dùng để set lại current per page : function
-    // maxPageNumberLimit, //số currentPerPage tối đa cần hiển thị : number
-    // setmaxPageNumberLimit, // hàm dùng để set lại số currentPerPage tối đa : function
-    // minPageNumberLimit, //số currentPerPage tối thiệu cần hiển thị : number
-    // setminPageNumberLimit, // hàm dùng để set lại số currentPerPage tối thiểu : function
-    // pageNumberLimit, // SỐ NUMBER giới hạn
   } = props;
   const dispatch = useDispatch();
   const paginate = useSelector(PaginationSelector);

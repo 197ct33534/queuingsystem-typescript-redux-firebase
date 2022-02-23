@@ -10,6 +10,7 @@ interface IProps {
 const DropDown = (props: IProps) => {
   const { selected, setSelected, options, up, scroll } = props;
   const [isActive, setIsActive] = useState(false);
+  // console.log(selected);
 
   const iconRef = useRef<HTMLDivElement>(null);
   const handleAddIconUp = () => {

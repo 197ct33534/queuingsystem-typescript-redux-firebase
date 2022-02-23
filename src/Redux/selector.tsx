@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { Iaccount } from '../firebase/Account';
 import { IEquip } from '../firebase/equip';
 interface IUser {
   user: {
@@ -29,6 +30,15 @@ interface Pagination {
     currentPerPage: number;
   };
 }
+interface IAccount {
+  account: {
+    dataAccount: Iaccount[];
+    dataAccountAdded: Iaccount;
+    dataAccountUpdated: Iaccount;
+    active: string;
+  };
+}
 export const userSelector = (state: IUser) => state.user;
 export const EquipSelector = (state: Equip) => state.equipment;
 export const PaginationSelector = (state: Pagination) => state.pagination;
+export const AccountSelector = (state: IAccount) => state.account;
