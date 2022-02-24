@@ -4,9 +4,7 @@ import {
   collection,
   getDocs,
   getDoc,
-  addDoc,
   updateDoc,
-  deleteDoc,
   setDoc,
   doc,
 } from 'firebase/firestore';
@@ -27,15 +25,10 @@ class EquipDataService {
     return setDoc(doc(db, 'Equipment', id), newEquip);
   };
 
-  updateEquip = (id: string, updatedEquip: IEquip) => {
+  updateEquip = (id: string, updatedEquip: any) => {
     const EquipDoc = doc(db, 'Equipment', id);
     return updateDoc(EquipDoc, updatedEquip);
   };
-
-  //   deleteEquip = (id) => {
-  //     const EquipDoc = doc(db, 'Equipment', id);
-  //     return deleteDoc(EquipDoc);
-  //   };
 
   getAllEquipment = () => {
     return getDocs(EquipCollectionRef);

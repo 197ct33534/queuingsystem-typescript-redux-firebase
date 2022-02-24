@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { Iaccount } from '../firebase/Account';
 import { IEquip } from '../firebase/equip';
+import { Iservice } from '../firebase/Service';
 interface IUser {
   user: {
     isLogginSucc: boolean;
@@ -38,7 +39,16 @@ interface IAccount {
     active: string;
   };
 }
+interface IService {
+  service: {
+    dataService: [];
+    dataServiceAdded: Iservice;
+    dataServiceUpdated: Iservice;
+    active: string;
+  };
+}
 export const userSelector = (state: IUser) => state.user;
 export const EquipSelector = (state: Equip) => state.equipment;
 export const PaginationSelector = (state: Pagination) => state.pagination;
 export const AccountSelector = (state: IAccount) => state.account;
+export const ServiceSelector = (state: IService) => state.service;

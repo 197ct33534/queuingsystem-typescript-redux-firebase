@@ -21,6 +21,8 @@ import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
 import TeamplateFormDetail from '../Pages/equipment/TeamplateFormDetail';
 import { EquipSelector } from '../Redux/selector';
 import { useSelector } from 'react-redux';
+import ServiceManager from '../Pages/service/ServiceManager';
+import TeamplateFormService from '../Pages/service/TeamplateFormService';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -274,6 +276,67 @@ const Router = () => {
             // },
           ],
         },
+        // //service
+        {
+          path: '/service',
+          children: [
+            {
+              path: 'add',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Thêm dịch vụ"
+                    task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                    contentMain="Quản lý dịch vụ"
+                  />
+                  <TeamplateFormService
+                    pathCancel="/service"
+                    pathSubmit="/service"
+                  />
+                </Teamplate>
+              ),
+            },
+            {
+              path: 'update',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Cập nhật"
+                        task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                        contentMain="Quản lý dịch vụ"
+                      />
+                      <TeamplateFormService
+                        pathCancel="/service"
+                        pathSubmit="/service"
+                        update
+                      />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
+            // {
+            //   path: 'detail',
+            //   children: [{ path: ':id', element: <DetailService /> }],
+            // },
+            {
+              path: '',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Danh sách dịch vụ"
+                    task={['Dịch vụ', '']}
+                    contentMain="Quản lý dịch vụ"
+                  />
+                  <ServiceManager />
+                </Teamplate>
+              ),
+            },
+          ],
+        },
         {
           path: '*',
           element: '404 not found',
@@ -281,36 +344,6 @@ const Router = () => {
       ],
     },
 
-    // //service
-    // {
-    //   path: '/service',
-    //   children: [
-    //     {
-    //       path: 'add',
-    //       element: <AddService pathCancel="/service" pathSubmit="/service" />,
-    //     },
-    //     {
-    //       path: 'update',
-    //       children: [
-    //         {
-    //           path: ':id',
-    //           element: (
-    //             <AddService
-    //               pathCancel="/service"
-    //               pathSubmit="/service"
-    //               update
-    //             />
-    //           ),
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       path: 'detail',
-    //       children: [{ path: ':id', element: <DetailService /> }],
-    //     },
-    //     { path: '', element: <ServiceManager /> },
-    //   ],
-    // },
     // //randomNumber
     // {
     //   path: '/randomNumber',

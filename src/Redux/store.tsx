@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import paginationSlice from '../components/paginationSlice';
 import equipSlice from '../Pages/equipment/equipSlice';
 import AccountSlice from '../Pages/manage/Account/AccountSlice';
+import ServiceSlice from '../Pages/service/ServiceSlice';
 import userSlice from '../Pages/user/userSlice';
 
 const store = configureStore({
@@ -10,6 +11,7 @@ const store = configureStore({
     equipment: equipSlice.reducer,
     pagination: paginationSlice.reducer,
     account: AccountSlice.reducer,
+    service: ServiceSlice.reducer,
   },
 });
 export default store;

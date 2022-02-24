@@ -91,15 +91,6 @@ const TeamplateFormAdd = (props: IProps) => {
     console.log('ren');
   }, []);
 
-  // const ArryKeyState = FillInfors.map((Fill) => Fill.state);
-
-  // ArryKeyState.map((key) => {
-  //   return (ObjectKeyState[key as keyof IEquip] = '');
-  // });
-
-  // const [fillState, setFillState] = useState(data);
-  // console.log(fillState);
-
   useEffect(() => {
     setFillState((prev) => ({
       ...prev,
@@ -155,6 +146,9 @@ const TeamplateFormAdd = (props: IProps) => {
                       }));
                     }}
                     placeholder={`Nhập ${fill.display.toLowerCase()}`}
+                    disabled={
+                      update ? (fill.state === 'id' ? true : false) : false
+                    }
                   />
                 }
               </div>
