@@ -18,6 +18,9 @@ import AccountManager from '../Pages/manage/Account/AccountManager';
 
 import AddAccount from '../Pages/manage/Account/AddAccount';
 import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
+import TeamplateFormDetail from '../Pages/equipment/TeamplateFormDetail';
+import { EquipSelector } from '../Redux/selector';
+import { useSelector } from 'react-redux';
 
 // import PageLogin from '../Pages/user/PageLogin';
 // import PageForgot from "../Pages/user/PageForgot";
@@ -49,6 +52,7 @@ import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
 
 // import UserManager from "../Pages/manage/User/UserManager";
 const Router = () => {
+  const equipment = useSelector(EquipSelector);
   let routes = useRoutes([
     {
       path: '/',
@@ -139,10 +143,39 @@ const Router = () => {
                 },
               ],
             },
-            // {
-            //   path: 'detail',
-            //   children: [{ path: ':id', element: <DetailDevice /> }],
-            // },
+            {
+              path: 'detail',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Chi tiết thiết bị"
+                        task={['Thiết bị', 'Danh sách thiết bị', '']}
+                        contentMain="Quản lý thiết bị"
+                      />
+                      <TeamplateFormDetail
+                        device
+                        classNameIcon="bx bxs-pencil"
+                        tittlePath="Cập nhật thiết bị"
+                        path="/equipment/update"
+                        data={[
+                          { display: 'Mã thiết bị', key: 'id' },
+                          { display: 'Loại thiết bị', key: 'typeDevice' },
+                          { display: 'Tên thiết bị', key: 'name' },
+                          { display: 'Tên đăng nhập', key: 'Account' },
+                          { display: 'Địa chỉ IP', key: 'ipAddress' },
+                          { display: 'Mật khẩu', key: 'passWord' },
+                          { display: 'Dịch vụ sử dụng', key: 'service' },
+                        ]}
+                        dataOrigin={equipment.dataEquip}
+                      />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             {
               path: '',
               element: (
