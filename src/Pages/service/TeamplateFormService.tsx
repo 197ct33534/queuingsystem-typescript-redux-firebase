@@ -21,13 +21,14 @@ const TeamplateFormService = (props: Iprops) => {
     data = Service.dataService.find((item) => id === String(item['id']));
   }
   const handleSubmitUpdate = () => {
-    const newObject = { ...infoService };
+    const newObject = { ...infoService, ...checkBox };
 
     SerDataService.updateService(infoService.id, newObject);
     dispatch(ServiceSlice.actions.updateNewService(newObject));
   };
   const handleSubmitAdd = () => {
     const newObject = { ...infoService, ...checkBox };
+
     SerDataService.addService(infoService.id, newObject);
     dispatch(ServiceSlice.actions.addNewService(newObject));
   };
@@ -46,22 +47,12 @@ const TeamplateFormService = (props: Iprops) => {
         }
   );
 
-  const [checkBox, stateCheckBox] = useState(
-    data
-      ? data
-      : {
-          resetCheckbox: false,
-          prefixCheckbox: false,
-          surfixCheckbox: false,
-          fromIncreseCheckbox: false,
-          // resetCheckbox: data.resetCheckbox ? data.resetCheckbox : false,
-          // prefixCheckbox: data.prefixCheckbox ? data.prefixCheckbox : false,
-          // surfixCheckbox: data.surfixCheckbox ? data.surfixCheckbox : false,
-          // fromIncreseCheckbox: data.fromIncreseCheckbox
-          //   ? data.fromIncreseCheckbox
-          //   : false,
-        }
-  );
+  const [checkBox, stateCheckBox] = useState({
+    resetCheckbox: data ? data['resetCheckbox'] : false,
+    prefixCheckbox: data ? data['prefixCheckbox'] : false,
+    surfixCheckbox: data ? data['surfixCheckbox'] : false,
+    fromIncreseCheckbox: data ? data['fromIncreseCheckbox'] : false,
+  });
 
   console.log('checkbox', checkBox);
 
