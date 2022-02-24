@@ -4,7 +4,7 @@ export default createSlice({
   initialState: {
     dataAccount: [],
     dataAccountAdded: {},
-    dataAccountUpdated: '',
+    dataAccountUpdated: {},
     active: 'Tất cả',
   },
   reducers: {
@@ -17,6 +17,9 @@ export default createSlice({
 
     addNewAccount: (state, action) => {
       state.dataAccountAdded = action.payload;
+    },
+    updateNewAccount: (state, action) => {
+      state.dataAccountUpdated = action.payload;
     },
   },
 });

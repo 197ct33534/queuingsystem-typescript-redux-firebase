@@ -27,10 +27,10 @@ class EquipDataService {
     return setDoc(doc(db, 'Equipment', id), newEquip);
   };
 
-  //   updateEquip = (id: string, updatedEquip: {}) => {
-  //     const EquipDoc = doc(db, 'Equipment', id);
-  //     return updateDoc(EquipDoc, updatedEquip);
-  //   };
+  updateEquip = (id: string, updatedEquip: IEquip) => {
+    const EquipDoc = doc(db, 'Equipment', id);
+    return updateDoc(EquipDoc, updatedEquip);
+  };
 
   //   deleteEquip = (id) => {
   //     const EquipDoc = doc(db, 'Equipment', id);

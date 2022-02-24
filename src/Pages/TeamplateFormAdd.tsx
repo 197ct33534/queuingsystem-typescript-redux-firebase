@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import DropDown from '../components/DropDown';
 import EquipDataService, { IEquip } from '../firebase/equip';
@@ -14,11 +14,11 @@ interface IFill {
 }
 interface IProps {
   update?: boolean;
-  data?: { typeDevice: string }[];
 }
 const TeamplateFormAdd = (props: IProps) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const { update, data } = props;
+  const { update } = props;
   const FillInfors = [
     { state: 'id', display: 'Mã thiết bị', type: 'input' },
     {
@@ -53,12 +53,7 @@ const TeamplateFormAdd = (props: IProps) => {
       type: 'input',
     },
   ];
-  const [selected, setSelected] = useState(
-    'Chọn loại thiết bị'
-    // data ? data.typeDevice : 'Chọn loại thiết bị'
-  );
-  // const ArryKeyState = FillInfors.map((Fill) => Fill.state);
-  const ObjectKeyState: IEquip = {
+  const [fillState, setFillState] = useState<IEquip>({
     id: '',
     name: '',
     ipAddress: '',
@@ -68,12 +63,42 @@ const TeamplateFormAdd = (props: IProps) => {
     Account: '',
     passWord: '',
     typeDevice: '',
+  });
+  const [selected, setSelected] = useState(
+    update ? fillState['typeDevice'] : 'Chọn loại thiết bị'
+  );
+  // let ObjectKeyState: IEquip = {
+  //   id: '',
+  //   name: '',
+  //   ipAddress: '',
+  //   active: true,
+  //   connect: true,
+  //   service: '',
+  //   Account: '',
+  //   passWord: '',
+  //   typeDevice: '',
+  // };
+  const getdatas = async (id: string) => {
+    const temp = await EquipDataService.getEquip(id);
+    const result: any = temp.data();
+    setSelected(result['typeDevice']);
+    setFillState(result);
   };
+  useEffect(() => {
+    if (update && id !== undefined) {
+      getdatas(id);
+    }
+    console.log('ren');
+  }, []);
+
+  // const ArryKeyState = FillInfors.map((Fill) => Fill.state);
+
   // ArryKeyState.map((key) => {
   //   return (ObjectKeyState[key as keyof IEquip] = '');
   // });
 
-  const [fillState, setFillState] = useState(ObjectKeyState);
+  // const [fillState, setFillState] = useState(data);
+  // console.log(fillState);
 
   useEffect(() => {
     setFillState((prev) => ({
@@ -88,6 +113,11 @@ const TeamplateFormAdd = (props: IProps) => {
     newEquip.connect = true;
     await EquipDataService.addEquipment(newEquip.id, newEquip);
     dispatch(equipSlice.actions.addNewEquip(newEquip));
+  };
+  const handleSubmitUpdate = async () => {
+    await EquipDataService.updateEquip(fillState.id, fillState);
+
+    dispatch(equipSlice.actions.updateNewAccount(fillState));
   };
   return (
     <>
@@ -166,7 +196,10 @@ const TeamplateFormAdd = (props: IProps) => {
             Hủy bỏ
           </Button>
         </Link>
-        <Link to="/equipment" onClick={handleSubmit}>
+        <Link
+          to="/equipment"
+          onClick={update ? handleSubmitUpdate : handleSubmit}
+        >
           <Button
             type="button"
             buttonStyle="btn--primary--solid"

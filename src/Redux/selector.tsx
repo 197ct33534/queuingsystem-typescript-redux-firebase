@@ -15,7 +15,7 @@ interface Equip {
     dataEquip: [];
     dataEquipAdded: IEquip;
     dataEquipUpdated: IEquip;
-    idDataEquipRemoved: string;
+
     selectedActive: string;
     selectedConnect: string;
   };

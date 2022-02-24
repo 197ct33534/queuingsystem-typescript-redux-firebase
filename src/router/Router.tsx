@@ -121,27 +121,24 @@ const Router = () => {
             //   path: 'detailRandom',
             //   children: [{ path: ':id', element: <RandomDetail /> }],
             // },
-            // {
-            //   path: 'update',
-            //   children: [
-            //     {
-            //       path: ':id',
-            //       element: (
-            //         <Teamplate>
-            //           <HeaderInfo
-            //             title="Cập nhật thiết bị"
-            //             task={['Thiết bị', 'Danh sách thiết bị', '']}
-            //             contentMain="Quản lý thiết bị"
-            //           />
-            //           <TeamplateFormAdd
-            //             update
-
-            //           />
-            //         </Teamplate>
-            //       ),
-            //     },
-            //   ],
-            // },
+            {
+              path: 'update',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Cập nhật thiết bị"
+                        task={['Thiết bị', 'Danh sách thiết bị', '']}
+                        contentMain="Quản lý thiết bị"
+                      />
+                      <TeamplateFormAdd update />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             // {
             //   path: 'detail',
             //   children: [{ path: ':id', element: <DetailDevice /> }],
