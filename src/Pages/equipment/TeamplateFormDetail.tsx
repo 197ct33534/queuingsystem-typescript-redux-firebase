@@ -32,7 +32,7 @@ const TeamplateFormDetail = (props: IProps) => {
           ))}
         </div>
       </div>
-      <Link to={`${path}/${id}`}>
+      <Link to={`${path}/${device ? id : ''}`}>
         <div className="deviceManager-add">
           <div className="deviceManager-add_icon">
             <i className={classNameIcon}></i>

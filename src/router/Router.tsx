@@ -19,7 +19,7 @@ import AccountManager from '../Pages/manage/Account/AccountManager';
 import AddAccount from '../Pages/manage/Account/AddAccount';
 import TeamplateFormAdd from '../Pages/TeamplateFormAdd';
 import TeamplateFormDetail from '../Pages/equipment/TeamplateFormDetail';
-import { EquipSelector } from '../Redux/selector';
+import { EquipSelector, RandomSelector } from '../Redux/selector';
 import { useSelector } from 'react-redux';
 import ServiceManager from '../Pages/service/ServiceManager';
 import TeamplateFormService from '../Pages/service/TeamplateFormService';
@@ -29,6 +29,8 @@ import AddRandom from '../Pages/random/AddRandom';
 
 const Router = () => {
   const equipment = useSelector(EquipSelector);
+  const Random = useSelector(RandomSelector);
+
   let routes = useRoutes([
     {
       path: '/',
@@ -97,10 +99,40 @@ const Router = () => {
                 </Teamplate>
               ),
             },
-            // {
-            //   path: 'detailRandom',
-            //   children: [{ path: ':id', element: <RandomDetail /> }],
-            // },
+            {
+              path: 'detailRandom',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Chi tiết"
+                        task={['Thiết bị', 'Danh sách cấp số', '']}
+                        contentMain="Quản lý Cấp số"
+                      />
+                      <TeamplateFormDetail
+                        classNameIcon={'bx bx-chevron-left-circle'}
+                        tittlePath="Quay lại"
+                        path={`/randomNumber`}
+                        data={[
+                          { display: 'Họ tên', key: 'nameCustomer' },
+                          { display: 'Nguồn cấp', key: 'origin' },
+                          { display: 'Tên dịch vụ', key: 'nameService' },
+                          { display: 'Trạng thái', key: 'status' },
+                          { display: 'Số thứ tự', key: 'id' },
+                          { display: 'Số điện thoại', key: 'phone' },
+                          { display: 'Thời gian cấp', key: 'fromDate' },
+                          { display: 'Địa chỉ Email', key: 'email' },
+                          { display: 'Hạn sử dụng', key: 'toDate' },
+                        ]}
+                        dataOrigin={Random.dataRandom}
+                      />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             {
               path: 'update',
               children: [
