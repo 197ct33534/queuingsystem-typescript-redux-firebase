@@ -12,17 +12,27 @@ import paginationSlice from '../../../components/paginationSlice';
 const AccountManager = () => {
   const Account = useSelector(AccountSelector);
   const dispatch = useDispatch();
-  const [account, setAccount] = useState<Iaccount[]>([
-    Account.dataAccountAdded,
-    ...Account.dataAccount,
-  ]);
-
+  const [account, setAccount] = useState<Iaccount[]>([]);
+  // useEffect(() => {
+  //   for (let i = 12; i <= 200; i++) {
+  //     AccountDataService.addAccount(i + '', {
+  //       id: 1 + '',
+  //       nameAccount: `tuyetnguyen@${i}`,
+  //       nameUser: 'Nguyễn Văn A',
+  //       phone: `0${912346513 + i}`,
+  //       emailAccount: `tuyetnguyen@${i}@gmail.com`,
+  //       jobAccount: i % 2 === 0 ? 'Kế toán' : i % 3 === 0 ? 'Quản lý' : 'Admin',
+  //       active: i % 4 === 0 ? true : false,
+  //     });
+  //   }
+  // });
   const getAccount = async () => {
     const data = await AccountDataService.getAllAccount();
     const dataArray: Iaccount[] = data.docs.map((doc): Iaccount => {
       let db: any = doc.data();
       return { ...db };
     });
+    dispatch(AccountSlice.actions.saveDataAccount(dataArray));
 
     setAccount(dataArray);
   };
@@ -34,13 +44,23 @@ const AccountManager = () => {
       Datas = Datas.filter((Account) => Account.active === false);
     }
   }
-  useEffect(() => {
-    getAccount();
-    dispatch(AccountSlice.actions.saveDataAccount(account));
-  }, []);
+
   useEffect(() => {
     dispatch(paginationSlice.actions.reset());
-  }, []);
+  }, [dispatch]);
+  useEffect(() => {
+    if (Account.dataAccount.length === 0) {
+      getAccount();
+    } else if (Object.keys(Account.dataAccountAdded).length) {
+      const newdata = [Account.dataAccountAdded, ...Account.dataAccount];
+      setAccount(newdata);
+      dispatch(AccountSlice.actions.saveDataAccount(newdata));
+      dispatch(AccountSlice.actions.resetAdded());
+    } else {
+      setAccount([...Account.dataAccount]);
+    }
+  }, [Account, dispatch]);
+
   return (
     <div className="deviceManager">
       <ControllerAccount />

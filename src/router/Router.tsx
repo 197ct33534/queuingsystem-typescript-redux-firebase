@@ -24,6 +24,8 @@ import { useSelector } from 'react-redux';
 import ServiceManager from '../Pages/service/ServiceManager';
 import TeamplateFormService from '../Pages/service/TeamplateFormService';
 import TeamplateFormDetailService from '../Pages/service/TeamplateFormDetailService';
+import RandomManager from '../Pages/random/RandomManager';
+import AddRandom from '../Pages/random/AddRandom';
 
 const Router = () => {
   const equipment = useSelector(EquipSelector);
@@ -322,6 +324,37 @@ const Router = () => {
               ),
             },
           ],
+        }, // //randomNumber
+        {
+          path: '/randomNumber',
+          children: [
+            {
+              path: 'add',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Cấp số mới"
+                    task={['Cấp số', 'Danh sách cấp số', '']}
+                    contentMain="Quản lý cấp số"
+                  />
+                  <AddRandom />
+                </Teamplate>
+              ),
+            },
+            {
+              path: '',
+              element: (
+                <Teamplate>
+                  <HeaderInfo
+                    title="Danh sách cấp số"
+                    task={['Cấp số', '']}
+                    contentMain="Quản lý cấp số"
+                  />
+                  <RandomManager />
+                </Teamplate>
+              ),
+            },
+          ],
         },
         {
           path: '*',
@@ -330,14 +363,6 @@ const Router = () => {
       ],
     },
 
-    // //randomNumber
-    // {
-    //   path: '/randomNumber',
-    //   children: [
-    //     { path: 'add', element: <AddRandom /> },
-    //     { path: '', element: <RandomManager /> },
-    //   ],
-    // },
     // ///announce
     // {
     //   path: '/announce',

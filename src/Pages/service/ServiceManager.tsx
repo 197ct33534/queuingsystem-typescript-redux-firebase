@@ -22,13 +22,30 @@ const ServiceManager = () => {
     dispatch(ServiceSlice.actions.saveDataService(dataArray));
     setService(dataArray);
   };
+  // useEffect(() => {
+  //   for (let i = 201; i <= 300; i++) {
+  //     SerDataService.addService(i + '', {
+  //       id: i + '',
+  //       nameService: `Kiosk`,
+  //       descService: 'Hoạt động ',
+  //       active: i % 2 === 0 ? true : false,
+  //       prefix: '0001',
+  //       surfix: '0001',
+  //       toIncrese: '9999',
+  //       fromIncrese: '0001',
+  //       resetCheckbox: true,
+  //       surfixCheckbox: true,
+  //       prefixCheckbox: true,
+  //       fromIncreseCheckbox: true,
+  //     });
+  //   }
+  // }, []);
   useEffect(() => {
     if (
-      (ser.length === 0 && Service.dataService.length === 0) ||
+      Service.dataService.length === 0 ||
       Object.keys(Service.dataServiceUpdated).length
     ) {
       getServices();
-      console.log('getdata lần 1', ser);
     } else if (Object.keys(Service.dataServiceAdded).length) {
       setService([Service.dataServiceAdded, ...Service.dataService]);
       dispatch(
@@ -42,6 +59,9 @@ const ServiceManager = () => {
       setService([...Service.dataService]);
     }
   }, []);
+  useEffect(() => {
+    dispatch(paginationSlice.actions.reset());
+  }, [dispatch]);
   let Datas = [...ser];
   if (Service.active !== 'Tất cả') {
     if (Service.active === 'Hoạt động') {

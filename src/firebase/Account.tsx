@@ -1,6 +1,13 @@
 import { db } from '../firebaseConfig';
 
-import { collection, getDocs, getDoc, addDoc, doc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  getDoc,
+  addDoc,
+  doc,
+  setDoc,
+} from 'firebase/firestore';
 
 const AccountCollectionRef = collection(db, 'Manage-Account');
 export interface Iaccount {
@@ -14,8 +21,8 @@ export interface Iaccount {
   rePassWord?: string;
 }
 class AccountDataService {
-  addAccount = (newAccount: Iaccount) => {
-    return addDoc(AccountCollectionRef, newAccount);
+  addAccount = (id: string, newAccount: Iaccount) => {
+    return setDoc(doc(db, 'Manage-Account', id), newAccount);
   };
 
   getAllAccount = () => {

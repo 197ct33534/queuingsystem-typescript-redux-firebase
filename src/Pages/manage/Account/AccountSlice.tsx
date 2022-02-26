@@ -21,5 +21,8 @@ export default createSlice({
     updateNewAccount: (state, action) => {
       state.dataAccountUpdated = action.payload;
     },
+    resetAdded: (state) => {
+      state.dataAccountAdded = {};
+    },
   },
 });

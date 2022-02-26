@@ -112,13 +112,28 @@ const Table = (props: IPropsTable) => {
                     ))}
                   {/* service */}
                   {item.keycolum === 'status' &&
-                    (data[item.keycolum as keyof typeof datas] === 'Vắng' ? (
-                      <span className="dis">{'Vắng'}</span>
-                    ) : data[item.keycolum as keyof typeof datas] ===
-                      'Đã hoàn thành' ? (
-                      <span className="active"> {'Đã hoàn thành'}</span>
+                    (['Vắng', 'Đã sử dụng'].includes(
+                      data[item.keycolum as keyof typeof datas]
+                    ) ? (
+                      <span className="dis">
+                        {data[item.keycolum as keyof typeof datas]}
+                      </span>
+                    ) : ['Đã hoàn thành'].includes(
+                        data[item.keycolum as keyof typeof datas]
+                      ) ? (
+                      <span className="active">
+                        {data[item.keycolum as keyof typeof datas]}
+                      </span>
+                    ) : ['Đang chờ', 'Đang thực hiện'].includes(
+                        data[item.keycolum as keyof typeof datas]
+                      ) ? (
+                      <span className="doing">
+                        {data[item.keycolum as keyof typeof datas]}
+                      </span>
                     ) : (
-                      <span className="doing"> {'Đang thực hiện'}</span>
+                      <span className="danger">
+                        {data[item.keycolum as keyof typeof datas]}
+                      </span>
                     ))}
                   {item.keycolum === 'status'
                     ? ''

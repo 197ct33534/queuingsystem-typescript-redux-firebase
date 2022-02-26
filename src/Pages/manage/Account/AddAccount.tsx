@@ -93,7 +93,7 @@ const AddAccount = () => {
     // const newEquip: IEquip = fillState;
     // newEquip.active = true;
     // newEquip.connect = true;
-    await AccountDataService.addAccount(fillState);
+    await AccountDataService.addAccount(fillState.id, fillState);
     dispatch(AccountSlice.actions.addNewAccount(fillState));
   };
   return (

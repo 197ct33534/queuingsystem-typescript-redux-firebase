@@ -29,7 +29,7 @@
 .controll-btn {
   @include flex(center, center);
   margin: 24px 0 32px 0;
-  background-color: #f6f6f6;
+
   > a:first-child {
     margin-right: 16px;
   }

@@ -48,8 +48,21 @@ interface IService {
     selectedDetail: string;
   };
 }
+interface IRandom {
+  random: {
+    dataRandom: [];
+    dataRandomAdded: {};
+    dataRandomUpdated: {};
+    nameService: string;
+    selectedService: string;
+    selectedStatus: string;
+    selectedOrigin: string;
+    mode: boolean;
+  };
+}
 export const userSelector = (state: IUser) => state.user;
 export const EquipSelector = (state: Equip) => state.equipment;
 export const PaginationSelector = (state: Pagination) => state.pagination;
 export const AccountSelector = (state: IAccount) => state.account;
 export const ServiceSelector = (state: IService) => state.service;
+export const RandomSelector = (state: IRandom) => state.random;

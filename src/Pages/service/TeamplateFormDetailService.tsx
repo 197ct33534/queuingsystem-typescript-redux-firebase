@@ -28,7 +28,7 @@ const TeamplateFormDetailService = () => {
   }
   useEffect(() => {
     dispatch(paginationSlice.actions.reset());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="BodyDetailService">
       <div className="DetailService">
