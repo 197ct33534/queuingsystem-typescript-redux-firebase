@@ -45,6 +45,7 @@ interface IService {
     dataServiceAdded: Iservice;
     dataServiceUpdated: Iservice;
     active: string;
+    selectedDetail: string;
   };
 }
 export const userSelector = (state: IUser) => state.user;

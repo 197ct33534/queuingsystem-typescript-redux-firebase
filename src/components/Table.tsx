@@ -98,26 +98,31 @@ const Table = (props: IPropsTable) => {
                       : ''
                   }
                 >
-                  {item.keycolum === 'active' ? (
-                    data[item.keycolum as keyof typeof datas] === true ? (
+                  {item.keycolum === 'active' &&
+                    (data[item.keycolum as keyof typeof datas] === true ? (
                       <span className="active">{'Hoạt động'}</span>
                     ) : (
                       <span className="danger">{'Ngưng hoạt động'}</span>
-                    )
-                  ) : (
-                    ''
-                  )}
-                  {item.keycolum === 'connect' ? (
-                    data[item.keycolum as keyof typeof datas] === true ? (
+                    ))}
+                  {item.keycolum === 'connect' &&
+                    (data[item.keycolum as keyof typeof datas] === true ? (
                       <span className="active">{'Kết nối'}</span>
                     ) : (
                       <span className="danger">{'Mất kết nối'}</span>
-                    )
-                  ) : (
-                    ''
-                  )}
-
-                  {data[item.keycolum as keyof typeof datas]}
+                    ))}
+                  {/* service */}
+                  {item.keycolum === 'status' &&
+                    (data[item.keycolum as keyof typeof datas] === 'Vắng' ? (
+                      <span className="dis">{'Vắng'}</span>
+                    ) : data[item.keycolum as keyof typeof datas] ===
+                      'Đã hoàn thành' ? (
+                      <span className="active"> {'Đã hoàn thành'}</span>
+                    ) : (
+                      <span className="doing"> {'Đang thực hiện'}</span>
+                    ))}
+                  {item.keycolum === 'status'
+                    ? ''
+                    : data[item.keycolum as keyof typeof datas]}
                   {item.keycolum === 'service' && (
                     <>
                       <p

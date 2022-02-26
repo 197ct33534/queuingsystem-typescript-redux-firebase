@@ -54,8 +54,6 @@ const TeamplateFormService = (props: Iprops) => {
     fromIncreseCheckbox: data ? data['fromIncreseCheckbox'] : false,
   });
 
-  console.log('checkbox', checkBox);
-
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
 

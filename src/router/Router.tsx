@@ -23,36 +23,8 @@ import { EquipSelector } from '../Redux/selector';
 import { useSelector } from 'react-redux';
 import ServiceManager from '../Pages/service/ServiceManager';
 import TeamplateFormService from '../Pages/service/TeamplateFormService';
+import TeamplateFormDetailService from '../Pages/service/TeamplateFormDetailService';
 
-// import PageLogin from '../Pages/user/PageLogin';
-// import PageForgot from "../Pages/user/PageForgot";
-
-// import Info from "../Pages/Home/Info";
-// import ChartDashBoard from "../Pages/Home/ChartDashBoard";
-
-// import DeviceManager from "../Pages/Device/DeviceManager";
-// import AddDevice from "../Pages/Device/AddDevice";
-// import DetailDevice from "../Pages/Device/DetailDevice";
-// import UpdateDevice from "../Pages/Device/UpdateDevice";
-
-// import ServiceManager from "../Pages/Service/ServiceManager";
-// import AddService from "../Pages/Service/AddService";
-// import DetailService from "../Pages/Service/DetailService";
-// import ProtectedRouters from "../ProtectedRouters";
-
-// import RandomManager from "../Pages/Random/RandomManager";
-// import AddRandom from "../Pages/Random/AddRandom";
-// import RandomDetail from "../Pages/Device/RandomDetail";
-
-// import ReportManager from "../Pages/Report/ReportManager";
-
-// import Role from "../Pages/manage/Role/Role";
-// import FormRole from "../Pages/manage/Role/FormRole";
-
-// import AccountManager from "../Pages/manage/Account/AccountManager";
-// import AddAccount from "../Pages/manage/Account/AddAccount";
-
-// import UserManager from "../Pages/manage/User/UserManager";
 const Router = () => {
   const equipment = useSelector(EquipSelector);
   let routes = useRoutes([
@@ -318,10 +290,24 @@ const Router = () => {
                 },
               ],
             },
-            // {
-            //   path: 'detail',
-            //   children: [{ path: ':id', element: <DetailService /> }],
-            // },
+            {
+              path: 'detail',
+              children: [
+                {
+                  path: ':id',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Chi tiết"
+                        task={['Dịch vụ', 'Danh sách dịch vụ', '']}
+                        contentMain="Quản lý dịch vụ"
+                      />
+                      <TeamplateFormDetailService />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             {
               path: '',
               element: (

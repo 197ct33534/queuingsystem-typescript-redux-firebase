@@ -10,10 +10,16 @@ const ControllerService = (props: IProps) => {
   const { detail } = props;
   const Service = useSelector(ServiceSelector);
   const dispatch = useDispatch();
-  const [selectedActive, setSelectedActive] = useState(Service.active);
+  const [selectedActive, setSelectedActive] = useState(
+    detail ? Service.selectedDetail : Service.active
+  );
   useEffect(() => {
-    dispatch(ServiceSlice.actions.setSelectedActive(selectedActive));
-  }, [selectedActive, dispatch]);
+    if (detail) {
+      dispatch(ServiceSlice.actions.setSelectedDetail(selectedActive));
+    } else {
+      dispatch(ServiceSlice.actions.setSelectedActive(selectedActive));
+    }
+  }, [selectedActive, dispatch, detail]);
   return (
     <div className="controlDevice controlService">
       <div className="controlDevice-warp controlService-warp">

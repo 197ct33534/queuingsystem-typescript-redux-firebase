@@ -5,7 +5,7 @@ export default createSlice({
     dataService: [],
     dataServiceAdded: {},
     dataServiceUpdated: {},
-
+    selectedDetail: 'Tất cả',
     active: 'Tất cả',
   },
   reducers: {
@@ -15,7 +15,9 @@ export default createSlice({
     setSelectedActive: (state, action) => {
       state.active = action.payload;
     },
-
+    setSelectedDetail: (state, action) => {
+      state.selectedDetail = action.payload;
+    },
     addNewService: (state, action) => {
       state.dataServiceAdded = action.payload;
     },
