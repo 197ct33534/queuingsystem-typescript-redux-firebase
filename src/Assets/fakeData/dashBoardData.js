@@ -14,11 +14,11 @@ export const navLists = [
   {
     display: 'Cài đặt hệ thống',
     icon: setting,
-    path: 'manage/account',
+    path: 'manage/role',
     childrens: [
-      { display: 'Quản lý vai trò', path: 'manage/role' },
-      { display: 'Quản lý tài khoản', path: 'manage/account' },
-      { display: 'Nhật ký người dùng', path: 'manage/user' },
+      { display: 'Quản lý vai trò', path: '/manage/role' },
+      { display: 'Quản lý tài khoản', path: '/manage/account' },
+      { display: 'Nhật ký người dùng', path: '/manage/user' },
     ],
   },
 ];

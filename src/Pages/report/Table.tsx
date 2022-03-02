@@ -1,34 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import FilterTable from '../../components/FilterTable';
 
-import { PaginationSelector } from '../Redux/selector';
+import { PaginationSelector } from '../../Redux/selector';
 
+// import FilterTable from "./FilterTable";
 interface IPropsTable {
   datas: any[];
 
   tittleHeaders: { keycolum: string; display: string }[];
   keySpecial?: string[];
-
-  IsDetail?: boolean;
-  pathDetail?: string;
-  IsUpdate?: boolean;
-  pathUpdate?: string;
+  dataOrigin: any[];
+  onClickFilter: (key: string) => void;
+  state: any;
 }
 const Table = (props: IPropsTable) => {
   const Paginate = useSelector(PaginationSelector);
   const {
     datas, // mãng chứa các object:[{}]
-    IsDetail, // mãng có cột chi tiết hay không : true or false
-    pathDetail, //nếu có chi tiết thì đường dẫn để xem chi tiết: string
-    IsUpdate, // mãng có cột update hay không : true or false
-    pathUpdate, //nếu có update thì đường dẫn để xem update: string
+
     tittleHeaders, // mãng chứa các tiêu đề : string[]
+    dataOrigin,
+    onClickFilter, // hành động khi click vào đầu cột
+    state,
   } = props;
-  const handleClickWatchAdd = (key: number) => {
-    let element = document.getElementsByClassName('colum-service-nowatch')[key];
-    element.classList.toggle('colum-service');
-  };
+
   const indexOfLastRow = Paginate.currentPerPage * Paginate.numRowInPage;
   const indexOfFirstRow = indexOfLastRow - Paginate.numRowInPage;
   const dataslice = datas.slice(indexOfFirstRow, indexOfLastRow);
@@ -39,24 +35,36 @@ const Table = (props: IPropsTable) => {
         <thead>
           <tr>
             {tittleHeaders.map((tittle, index) => (
-              <th key={index}>{tittle.display}</th>
+              <th key={index}>
+                {tittle.display}
+
+                <p
+                  className="table-filter"
+                  onClick={() => onClickFilter(tittle.keycolum)}
+                >
+                  <i className="bx bxs-up-arrow"></i>
+                  <i className="bx bxs-down-arrow"></i>
+                </p>
+
+                {state[tittle.keycolum] && (
+                  <FilterTable
+                    data={[
+                      'Tất cả',
+                      ...dataOrigin.map((item) => item[tittle.keycolum]),
+                    ]}
+                    state={state}
+                    keydata={tittle.keycolum}
+                  />
+                )}
+              </th>
             ))}
-            {IsDetail && <th></th>}
-            {IsUpdate && <th></th>}
           </tr>
         </thead>
         <tbody>
           {dataslice.map((data, key) => (
             <tr key={`row ${key}`}>
               {tittleHeaders.map((item, index) => (
-                <th
-                  key={index}
-                  className={
-                    item.keycolum === 'service'
-                      ? 'colum-service colum-service-nowatch'
-                      : ''
-                  }
-                >
+                <th key={index}>
                   {item.keycolum === 'active' &&
                     (data[item.keycolum as keyof typeof datas] === true ? (
                       <span className="active">{'Hoạt động'}</span>
@@ -96,32 +104,8 @@ const Table = (props: IPropsTable) => {
                     ))}
                   {item.keycolum !== 'status' &&
                     data[item.keycolum as keyof typeof datas]}
-                  {item.keycolum === 'service' && (
-                    <>
-                      <p
-                        className="table-Link table-Link_watch"
-                        onClick={() => handleClickWatchAdd(key)}
-                      >
-                        xem thêm
-                      </p>
-                    </>
-                  )}
                 </th>
               ))}
-              {IsDetail && (
-                <th>
-                  <Link to={`/${pathDetail}/${data['id']}`}>
-                    <span className="table-Link">Chi tiết</span>
-                  </Link>
-                </th>
-              )}
-              {IsUpdate && (
-                <th>
-                  <Link to={`/${pathUpdate}/${data['id']}`}>
-                    <span className="table-Link">Cập nhật</span>
-                  </Link>
-                </th>
-              )}
             </tr>
           ))}
         </tbody>

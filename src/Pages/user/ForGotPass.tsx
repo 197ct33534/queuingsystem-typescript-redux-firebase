@@ -27,6 +27,7 @@ const ForGotPass: React.FC = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     const result = users.find((user) => user.email === email);
+    console.log(result);
 
     // thành công
     if (result) {

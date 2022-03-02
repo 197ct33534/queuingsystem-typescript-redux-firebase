@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import DropDown from '../components/DropDown';
+import DropDownSelect from '../components/DropDownSelect';
 import EquipDataService, { IEquip } from '../firebase/equip';
 import equipSlice from './equipment/equipSlice';
 
@@ -81,14 +82,17 @@ const TeamplateFormAdd = (props: IProps) => {
   const getdatas = async (id: string) => {
     const temp = await EquipDataService.getEquip(id);
     const result: any = temp.data();
+    console.log(result);
+
     setSelected(result['typeDevice']);
     setFillState(result);
   };
+  console.log(fillState);
+
   useEffect(() => {
     if (update && id !== undefined) {
       getdatas(id);
     }
-    console.log('ren');
   }, []);
 
   useEffect(() => {
@@ -128,13 +132,12 @@ const TeamplateFormAdd = (props: IProps) => {
                 <div className="formAdd-Item_title">
                   {fill.display}: <span>*</span>
                 </div>
-                {/* update & (fill.state === 'service') ? (
+                {update && fill.state === 'service' ? (
                   <DropDownSelect
                     data={[...fillState[fill.state].split(',')]}
                     placeholder="Tất cả"
                   />
-                ) :  */}
-                {
+                ) : (
                   <input
                     required
                     type={fill.display === 'Mật khẩu' ? 'password' : 'text'}
@@ -150,7 +153,7 @@ const TeamplateFormAdd = (props: IProps) => {
                       update ? (fill.state === 'id' ? true : false) : false
                     }
                   />
-                }
+                )}
               </div>
             ) : (
               <div

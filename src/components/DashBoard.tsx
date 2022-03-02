@@ -55,7 +55,10 @@ const DashBoard = () => {
                       // >
                       <li
                         key={child.display}
-                        onClick={() => navigate(child.path)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate(child.path);
+                        }}
                       >
                         {child.display}
                       </li>

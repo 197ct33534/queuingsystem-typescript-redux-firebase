@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { Iaccount } from '../firebase/Account';
 import { IEquip } from '../firebase/equip';
+import { IRole } from '../firebase/ManagerRole';
 import { Iservice } from '../firebase/Service';
 interface IUser {
   user: {
@@ -60,9 +61,38 @@ interface IRandom {
     mode: boolean;
   };
 }
+export interface IReport {
+  report: {
+    id: boolean;
+    nameService: boolean;
+    fromDate: boolean;
+    status: boolean;
+    origin: boolean;
+    idValue: string;
+    nameServiceValue: string;
+    fromDateValue: string;
+    statusValue: string;
+    originValue: string;
+  };
+}
+interface IManagerUser {
+  managerUser: {
+    dataManagerUser: [];
+  };
+}
+interface IManagerRole {
+  managerRole: {
+    dataManagerRole: [];
+    addManagerRole: IRole;
+    updateManagerRole: IRole;
+  };
+}
 export const userSelector = (state: IUser) => state.user;
 export const EquipSelector = (state: Equip) => state.equipment;
 export const PaginationSelector = (state: Pagination) => state.pagination;
 export const AccountSelector = (state: IAccount) => state.account;
 export const ServiceSelector = (state: IService) => state.service;
 export const RandomSelector = (state: IRandom) => state.random;
+export const ReportSelector = (state: IReport) => state.report;
+export const ManagerUserSelector = (state: IManagerUser) => state.managerUser;
+export const ManagerRoleSelector = (state: IManagerRole) => state.managerRole;

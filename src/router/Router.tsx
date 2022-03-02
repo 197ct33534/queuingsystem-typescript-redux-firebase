@@ -26,6 +26,11 @@ import TeamplateFormService from '../Pages/service/TeamplateFormService';
 import TeamplateFormDetailService from '../Pages/service/TeamplateFormDetailService';
 import RandomManager from '../Pages/random/RandomManager';
 import AddRandom from '../Pages/random/AddRandom';
+import ReportManager from '../Pages/report/ReportManager';
+import UserManager from '../Pages/manage/User/UserManager';
+import RoleManager from '../Pages/manage/Role/RoleManager';
+
+import FormRole from '../Pages/manage/Role/FormRole';
 
 const Router = () => {
   const equipment = useSelector(EquipSelector);
@@ -202,29 +207,56 @@ const Router = () => {
         {
           path: '/manage',
           children: [
-            // {
-            //   path: 'role',
+            {
+              path: 'role',
 
-            //   children: [
-            //     { path: 'add', element: <FormRole /> },
-            //     {
-            //       path: 'update',
-            //       children: [
-            //         {
-            //           path: ':id',
-            //           element: (
-            //             <FormRole
-            //               // pathCancel="/service"
-            //               // pathSubmit="/service"
-            //               update
-            //             />
-            //           ),
-            //         },
-            //       ],
-            //     },
-            //     { path: '', element: <Role /> },
-            //   ],
-            // },
+              children: [
+                {
+                  path: 'add',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Thêm vai trò"
+                        task={['Cài đặt hệ thống', ' Quản lý vai trò', '']}
+                        contentMain="Danh sách vai trò"
+                      />
+                      <FormRole />
+                    </Teamplate>
+                  ),
+                },
+                {
+                  path: 'update',
+                  children: [
+                    {
+                      path: ':id',
+                      element: (
+                        <Teamplate>
+                          <HeaderInfo
+                            title="Cập nhật vai trò"
+                            task={['Cài đặt hệ thống', 'Quản lý vai trò', '']}
+                            contentMain="Danh sách vai trò"
+                          />
+                          <FormRole update />
+                        </Teamplate>
+                      ),
+                    },
+                  ],
+                },
+                {
+                  path: '',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Quản lý vai trò"
+                        task={['Cài đặt hệ thống', '']}
+                        contentMain="Danh sách vai trò"
+                      />
+                      <RoleManager />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
             {
               path: 'account',
               children: [
@@ -257,29 +289,41 @@ const Router = () => {
               ],
             },
             // { path: '', element: <Role /> },
-            // {
-            //   path: 'user',
+            {
+              path: 'user',
 
-            //   children: [
-            //     { path: 'add', element: <FormRole /> },
-            //     {
-            //       path: 'update',
-            //       children: [
-            //         {
-            //           path: ':id',
-            //           element: (
-            //             <FormRole
-            //               // pathCancel="/service"
-            //               // pathSubmit="/service"
-            //               update
-            //             />
-            //           ),
-            //         },
-            //       ],
-            //     },
-            //     { path: '', element: <UserManager /> },
-            //   ],
-            // },
+              children: [
+                // { path: 'add', element: <FormRole /> },
+                // {
+                //   path: 'update',
+                //   children: [
+                //     {
+                //       path: ':id',
+                //       element: (
+                //         <FormRole
+                //           // pathCancel="/service"
+                //           // pathSubmit="/service"
+                //           update
+                //         />
+                //       ),
+                //     },
+                //   ],
+                // },
+                {
+                  path: '',
+                  element: (
+                    <Teamplate>
+                      <HeaderInfo
+                        title="Quản lý tài khoản"
+                        task={['Cài đặt hệ thống ', '']}
+                        contentMain="Danh sách tài khoản"
+                      />
+                      <UserManager />
+                    </Teamplate>
+                  ),
+                },
+              ],
+            },
           ],
         },
         // //service
@@ -388,19 +432,22 @@ const Router = () => {
             },
           ],
         },
+        // ///announce
+        {
+          path: '/announce',
+          element: (
+            <Teamplate>
+              <HeaderInfo title="Lập báo cáo" task={['Báo cáo', '']} />
+              <ReportManager />
+            </Teamplate>
+          ),
+        },
         {
           path: '*',
           element: '404 not found',
         },
       ],
     },
-
-    // ///announce
-    // {
-    //   path: '/announce',
-    //   element: <ReportManager />,
-    // },
-    // //manager
   ]);
   return routes;
 };

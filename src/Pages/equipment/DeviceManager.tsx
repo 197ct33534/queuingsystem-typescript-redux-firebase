@@ -15,7 +15,7 @@ const DeviceManager = () => {
   const [equip, setEquip] = useState<IEquip[]>([]);
   // useEffect(() => {
   //   for (let i = 1; i <= 100; i++) {
-  //     EquipDataService.addEquipment(i + '', {
+  //     EquipDataService.addEquipment(`KIO_${i}`, {
   //       id: `KIO_${i}`,
   //       name: 'Kiosk',
   //       ipAddress: `192.168.1.${i}`,
