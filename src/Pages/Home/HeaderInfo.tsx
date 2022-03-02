@@ -77,7 +77,7 @@ const HeaderInfo = (props: Iprops) => {
           {active && <NotifyBell users={notifyBells} />}
         </div>
       </div>
-      <div className="deviceManager-tittle">{contentMain}</div>
+      {contentMain && <div className="deviceManager-tittle">{contentMain}</div>}
     </>
   );
 };
